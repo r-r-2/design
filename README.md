@@ -45,10 +45,10 @@ systems/<id>/
   components/*.html  one snippet per component: metadata comment (name, group, summary, rules) + markup
   fonts/ assets/     woff2 files with licences, images
   CHANGELOG.md
-site/                hub templates: index, system review page, hub.css, 404, _headers
-scripts/build.py     builds every system into public/
+site/                hub templates: index, system review page, hub.css, 404
+scripts/build.py     builds every system into docs/
 scripts/check.py     contrast, DESIGN.md lint and site conformance (also published at /check.py)
-public/              generated and committed; this is what Cloudflare serves
+docs/                generated and committed; this is what GitHub Pages serves
 ```
 
 ## Change something
@@ -57,7 +57,7 @@ public/              generated and committed; this is what Cloudflare serves
 2. `python3 scripts/build.py`
 3. `python3 scripts/check.py all`: every colour pair must pass AA, and DESIGN.md must lint with 0 errors and 0 warnings (needs `npx`).
 4. `python3 scripts/check.py site systems/<id>/css --system <id>`: the system has to pass its own checker.
-5. `python3 -m http.server -d public` and look at `/<id>/` in light, dark and at phone width.
+5. `python3 -m http.server -d docs` and look at `/<id>/` in light, dark and at phone width.
 6. Note the change in the system's `CHANGELOG.md`. Bump the patch or minor version for additions and fixes. A breaking change (renamed class, removed token) needs a new major, which creates a new `/v<major>/` folder and leaves the old one in place.
 
 ## Add a system
@@ -66,7 +66,9 @@ Copy `systems/personal/` to `systems/<new-id>/`, change `system.json` (pick a ne
 
 ## Deploy
 
-`public/` is served by a Cloudflare Worker with static assets (`wrangler.jsonc`), the same setup as resume.rr2.dev. Connect the repo in the Cloudflare dashboard, with no build command (the output is committed), and add the custom domain `design.rr2.dev`. `public/_headers` allows other sites to load the fonts and CSS cross-origin.
+GitHub Pages serves `docs/` from `main` at the custom domain in `docs/CNAME` (`design.rr2.dev`). `docs/.nojekyll` stops Jekyll from turning `DESIGN.md` into HTML. Pushing to `main` publishes, so preview locally first.
+
+One-time setup: Settings → Pages → Deploy from a branch → `main` / `/docs`, and a DNS CNAME `design` → `r-r-2.github.io` (DNS only) at Cloudflare.
 
 ## Commits
 

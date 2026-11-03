@@ -56,7 +56,7 @@ def load_system(system: str, major: str, css: str = None, tokens: str = None) ->
     if local and local.is_dir():
         sysm = json.loads((local / "system.json").read_text())
         major = sysm["version"].split(".")[0]
-        built = REPO / "public" / system / f"v{major}" / "brand.css"
+        built = REPO / "docs" / system / f"v{major}" / "brand.css"
         css_text = fetch(css) if css else (built.read_text() if built.exists() else "")
         tok = json.loads(fetch(tokens) if tokens else (local / "tokens.json").read_text())
         prefix = sysm["prefix"]

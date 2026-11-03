@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Build every design system in systems/ into public/.
+"""Build every design system in systems/ into docs/ (served by GitHub Pages).
 
 For each systems/<id>/ (with system.json, tokens.json, css/, components/, design.src.md):
   systems/<id>/DESIGN.md                 generated: front matter from tokens.json + prose + component snippets
-  public/<id>/v<major>/brand.css         fonts + tokens + components, readable
-  public/<id>/v<major>/brand.min.css     minified, fonts relative to the CSS file
-  public/<id>/v<major>/brand.inline.min.css  minified, absolute font URLs, for pasting into a <style>
-  public/<id>/v<major>/tokens.css|tokens.json|DESIGN.md|llms.txt|components/|fonts/|assets/
-  public/<id>/index.html                 the review page
+  docs/<id>/v<major>/brand.css         fonts + tokens + components, readable
+  docs/<id>/v<major>/brand.min.css     minified, fonts relative to the CSS file
+  docs/<id>/v<major>/brand.inline.min.css  minified, absolute font URLs, for pasting into a <style>
+  docs/<id>/v<major>/tokens.css|tokens.json|DESIGN.md|llms.txt|components/|fonts/|assets/
+  docs/<id>/index.html                 the review page
 
-And for the whole site: public/index.html, public/llms.txt, public/check.py, public/_headers, public/404.html.
+And for the whole site: docs/index.html, docs/llms.txt, docs/check.py, docs/404.html, docs/CNAME, docs/.nojekyll.
 
 Standard library only. Running it twice changes nothing.
 """
@@ -20,7 +20,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PUBLIC = ROOT / "public"
+PUBLIC = ROOT / "docs"
 SITE = "https://design.rr2.dev"
 
 CSS_ORDER = ["base", "type", "header", "content", "controls", "forms", "cards", "nav", "feedback", "guide", "footer"]
@@ -452,7 +452,8 @@ def main() -> None:
     write(PUBLIC / "index.html", root_index(systems))
     write(PUBLIC / "llms.txt", llms_root(systems))
     write(PUBLIC / "404.html", (ROOT / "site/404.html").read_text())
-    write(PUBLIC / "_headers", (ROOT / "site/_headers").read_text())
+    write(PUBLIC / ".nojekyll", "")
+    write(PUBLIC / "CNAME", "design.rr2.dev\n")
     write(PUBLIC / "check.py", (ROOT / "scripts/check.py").read_text())
     write(PUBLIC / "hub.css", (ROOT / "site/hub.css").read_text())
     # The hub uses the first system's assets for its own favicon.

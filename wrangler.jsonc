@@ -1,7 +1,0 @@
-{
-  // Cloudflare Worker serving design.rr2.dev. Static files only, from ./public (committed build output).
-  "name": "design",
-  "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./public", "not_found_handling": "404-page" },
-  "routes": [{ "pattern": "design.rr2.dev", "custom_domain": true }]
-}
