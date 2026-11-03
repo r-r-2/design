@@ -7,17 +7,16 @@
   "prefix": "pb",
   "version": "1.0.0",
   "status": "stable",
-  "accent": "#a8325e",
   "used_by": [
     "rr2.dev",
     "notes.rr2.dev",
     "resume.rr2.dev"
   ],
-  "palette": [
-    "#a8325e",
-    "#3a5a80",
-    "#f3f4f6",
-    "#1f2329",
-    "#995700"
+  "palette_tokens": [
+    "raspberry",
+    "slate",
+    "paper",
+    "ink",
+    "amber"
   ]
 }

@@ -335,7 +335,7 @@ Copy the markup exactly. Each component's rules come first, then its HTML. Live 
 
 ### Text
 
-#### Type
+#### Type classes
 
 Type classes for every text style. Use these instead of setting sizes.
 

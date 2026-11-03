@@ -1,33 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="pb">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}} design system v{{version}} — design.rr2.dev</title>
 <meta name="description" content="{{description}}">
-<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="check-ignore" content="many-primary">
 <link rel="alternate" type="text/markdown" href="{{base}}/DESIGN.md" title="DESIGN.md">
-<link rel="stylesheet" href="/hub.css">
-<link rel="stylesheet" href="{{base}}/brand.css">
-<script>try{var t=localStorage.getItem('sg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<!-- pb:hubhead -->
+<!-- pb:systemcss -->
 </head>
-<body>
-<a class="sg-skip" href="#main">Skip to content</a>
-<div class="sg-bar"><div class="sg-bar-in">
-  <nav class="sg-crumb" aria-label="Site">
-    <a class="sg-home" href="/">design</a><span class="sg-sep">/</span>
-    <details class="sg-switch">
-      <summary aria-label="Switch design system">{{title}} <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5l5 5 5-5"/></svg></summary>
-      <!-- pb:switcher -->
-    </details>
-  </nav>
-  <div class="sg-tools">
-    <button class="sg-iconbtn" type="button" id="sg-theme" aria-label="Switch light or dark theme">
-      <svg class="sg-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="sg-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-    </button>
-  </div>
-</div></div>
+<body class="sg-wide">
+<!-- pb:header -->
 
 <div class="sg-layout">
   <nav class="sg-side" aria-label="On this page">
@@ -43,15 +27,16 @@
   </nav>
 
   <main class="sg-main" id="main">
-    <p class="sg-eyebrow">Design system</p>
-    <h1 class="sg-title">{{title}}</h1>
-    <p class="sg-lede">{{description}}</p>
+    <details class="sg-jump"><summary>Jump to</summary><ul><!-- pb:jumpnav --></ul></details>
+    <p class="pb-label">Design system</p>
+    <h1 class="pb-h1 sg-title">{{title}}</h1>
+    <p class="pb-lede" style="max-width:62ch">{{description}}</p>
     <ul class="sg-facts">
       <li>Version <b>{{version}}</b></li><li>Status <b>{{status}}</b></li><li>Prefix <b>{{prefix}}-</b></li><li>Used by <b>{{used_by}}</b></li>
     </ul>
 
-    <section class="sg-agent" id="agents" aria-labelledby="agents-h">
-      <h2 id="agents-h">Use with an agent</h2>
+    <section class="pb-card sg-agent" id="agents" aria-labelledby="agents-h">
+      <h2 class="pb-h3" id="agents-h">Use with an agent</h2>
       <p>Paste this into the AGENTS.md (or CLAUDE.md) of any site that should follow this system.</p>
       <div class="sg-snippet"><pre id="agent-line" tabindex="0">## UI
 This site uses the {{title}} design system v{{major}}.
@@ -72,19 +57,19 @@ This site uses the {{title}} design system v{{major}}.
       </ul>
     </section>
 
-    <h2 class="sg-h2" id="colour">Colour</h2>
+    <h2 class="pb-h2 sg-h2" id="colour">Colour</h2>
     <p>Swatches follow the theme toggle. Values are light · dark. Contrast is measured on paper.</p>
-    <div class="sg-preview pb sg-fpanel"><!-- pb:swatches --></div>
+    <div class="sg-preview {{prefix}} sg-fpanel" data-system="{{title}}"><!-- pb:swatches --></div>
 
-    <h2 class="sg-h2" id="type">Type</h2>
+    <h2 class="pb-h2 sg-h2" id="type">Type</h2>
     <p>Use the class, not the numbers.</p>
-    <div class="sg-preview pb sg-fpanel"><!-- pb:type --></div>
+    <div class="sg-preview {{prefix}} sg-fpanel" data-system="{{title}}"><!-- pb:type --></div>
 
-    <h2 class="sg-h2" id="space">Space and shape</h2>
+    <h2 class="pb-h2 sg-h2" id="space">Space and shape</h2>
     <p>4px spacing steps, 8px corners, hairline borders, faint shadows.</p>
-    <div class="sg-preview pb sg-fpanel"><!-- pb:space --></div>
+    <div class="sg-preview {{prefix}} sg-fpanel" data-system="{{title}}"><!-- pb:space --></div>
 
-    <h2 class="sg-h2" id="components">Components</h2>
+    <h2 class="pb-h2 sg-h2" id="components">Components</h2>
     <p>Each one: a live preview, the exact HTML to copy, and the rules that go with it.</p>
     <!-- pb:components -->
   </main>
@@ -92,12 +77,6 @@ This site uses the {{title}} design system v{{major}}.
 
 <script>
 (function () {
-  var r = document.documentElement;
-  document.getElementById('sg-theme').addEventListener('click', function () {
-    var dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    r.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('sg-theme', r.dataset.theme); localStorage.setItem('pb-theme', r.dataset.theme); } catch (e) {}
-  });
   function copy(btn, text) {
     (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () {
       var o = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = o; }, 1400);
@@ -105,17 +84,14 @@ This site uses the {{title}} design system v{{major}}.
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-copy],[data-copy-el]');
-    if (!b) return;
-    e.preventDefault();
-    var el = document.getElementById(b.dataset.copyEl || ('code-' + b.dataset.copy));
-    copy(b, el.textContent);
-  });
-  // close the switcher when clicking elsewhere
-  document.addEventListener('click', function (e) {
+    if (b) { e.preventDefault(); copy(b, document.getElementById(b.dataset.copyEl || ('code-' + b.dataset.copy)).textContent); }
     var d = document.querySelector('.sg-switch');
-    if (d.open && !d.contains(e.target)) d.open = false;
+    if (d && d.open && !d.contains(e.target)) d.open = false;
+    var j = e.target.closest('.sg-jump a');
+    if (j) j.closest('details').open = false;
   });
 })();
 </script>
+<!-- pb:footer -->
 </body>
 </html>

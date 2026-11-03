@@ -328,7 +328,7 @@ def space_rows(t: dict, p: str) -> str:
     return f'<div class="sg-panel"><div class="sg-space">{cells}</div></div><div class="sg-shapes">{radii}{shadows}</div>'
 
 
-def component_sections(snips: list) -> tuple:
+def component_sections(snips: list, sysm: dict) -> tuple:
     nav, body = [], []
     group = None
     for s in snips:
@@ -339,10 +339,10 @@ def component_sections(snips: list) -> tuple:
         nav.append(f'<li><a href="#{sid}">{esc(s["name"])}</a></li>')
         rules = "".join(f"<li>{esc(r)}</li>" for r in s["rules"])
         live = s["markup"].replace(SITE + "/", "/")
-        preview = "" if s["preview"] == "code-only" else f'<div class="sg-preview pb">{live}</div>'
+        preview = "" if s["preview"] == "code-only" else f'<div class="sg-preview {sysm["prefix"]}" data-system="{esc(sysm["title"])}">{live}</div>'
         body.append(
-            f'<section class="sg-comp" id="{sid}"><div class="sg-comp-head"><p class="sg-eyebrow">{group}</p>'
-            f'<h3>{esc(s["name"])}</h3><p>{esc(s["summary"])}</p></div>'
+            f'<section class="sg-comp" id="{sid}"><div class="sg-comp-head"><p class="pb-label">{group}</p>'
+            f'<h3 class="pb-h3">{esc(s["name"])}</h3><p class="pb-small">{esc(s["summary"])}</p></div>'
             f'{preview}'
             f'<details class="sg-code"{" open" if s["preview"] == "code-only" else ""}><summary>HTML</summary>'
             f'<button class="sg-copybtn" type="button" data-copy="{sid}">Copy</button>'
@@ -351,10 +351,48 @@ def component_sections(snips: list) -> tuple:
     return "".join(nav), "".join(body)
 
 
+HUB_SYSTEM = "personal"  # the hub itself is styled with this system
+
+
+THEME_TOGGLE = ('<button class="pb-toggle" type="button" aria-label="Switch light or dark theme" onclick="var r=document.documentElement,'
+                "d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=d?'light':'dark';"
+                "try{localStorage.setItem('pb-theme',r.dataset.theme)}catch(e){}\">"
+                '<svg class="pb-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+                '<svg class="pb-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>')
+
+
+def hub_header(systems: list, current: str = None) -> str:
+    sw = ""
+    if current:
+        title = next(x["title"] for x in systems if x["id"] == current)
+        sw = ('<details class="sg-switch"><summary aria-label="Switch design system, current: ' + esc(title) + '">' + esc(title) +
+              ' <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+              '<path d="M1 1.5l5 5 5-5"/></svg></summary>' + switcher(systems, current) + '</details>')
+    return ('<a class="sg-skip" href="#main">Skip to content</a><div class="pb-top"><header class="pb-nav"><div class="pb-logo">'
+            f'<a href="https://rr2.dev" aria-label="rr2.dev"><img class="pb-ico" src="/{HUB_SYSTEM}/v1/assets/avatar.webp" width="24" height="24" alt="">'
+            '<span class="pb-root">rr2.dev</span></a><span class="pb-slash">/</span><a class="sg-crumb-link" href="/">design</a>' + sw +
+            '</div>' + THEME_TOGGLE + '</header></div>')
+
+
+HUB_HEAD = ('<link rel="icon" href="/favicon.ico" sizes="any">\n'
+            f'<link rel="preload" href="/{HUB_SYSTEM}/v1/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="preload" href="/{HUB_SYSTEM}/v1/fonts/instrument-sans-400.woff2" as="font" type="font/woff2" crossorigin>\n'
+            f'<link rel="stylesheet" href="/{HUB_SYSTEM}/v1/brand.css">\n<link rel="stylesheet" href="/hub.css">\n'
+            "<script>try{var t=localStorage.getItem('pb-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>")
+
+FOOTER = ('<footer class="pb-footer"><p><a href="/">design.rr2.dev</a> · <a href="/llms.txt">llms.txt</a> · '
+          '<a href="https://github.com/r-r-2/design">GitHub</a> · Part of <a href="https://rr2.dev">rr2.dev</a></p></footer>')
+
+
+def page_common(tpl: str, systems: list, current: str = None) -> str:
+    return (tpl.replace("<!-- pb:hubhead -->", HUB_HEAD).replace("<!-- pb:header -->", hub_header(systems, current))
+               .replace("<!-- pb:footer -->", FOOTER))
+
+
 def switcher(systems: list, current: str) -> str:
     items = "".join(
         f'<li><a href="/{s["id"]}/"{" aria-current=page" if s["id"] == current else ""}>'
-        f'<span class="sg-dot" style="background:{esc(s["accent"])}"></span><span><b>{esc(s["title"])}</b>'
+        f'<span class="sg-dot" style="background:var(--{s["prefix"]}-{s["palette_tokens"][0]})"></span><span><b>{esc(s["title"])}</b>'
         f'<small>v{s["version"].split(".")[0]} · {esc(s["status"])}</small></span></a></li>' for s in systems)
     return f'<ul class="sg-switch-list">{items}<li><a href="/"><span class="sg-dot"></span><span><b>All systems</b></span></a></li></ul>'
 
@@ -362,7 +400,7 @@ def switcher(systems: list, current: str) -> str:
 def review_page(sysm: dict, t: dict, snips: list, systems: list) -> str:
     tpl = (ROOT / "site/system.html").read_text()
     p, sid, major = sysm["prefix"], sysm["id"], sysm["version"].split(".")[0]
-    nav, comps = component_sections(snips)
+    nav, comps = component_sections(snips, sysm)
     base = f"/{sid}/v{major}"
     rep = {
         "{{title}}": esc(sysm["title"]), "{{description}}": esc(sysm["description"]), "{{id}}": sid,
@@ -371,24 +409,38 @@ def review_page(sysm: dict, t: dict, snips: list, systems: list) -> str:
     }
     for k, v in rep.items():
         tpl = tpl.replace(k, v)
-    tpl = fill(tpl, "switcher", switcher(systems, sid))
+    tpl = page_common(tpl, systems, sid)
+    extra = "" if sid == HUB_SYSTEM else f'<link rel="stylesheet" href="{base}/brand.css">'
+    extra += other_tokens(systems, {sid, HUB_SYSTEM})
+    tpl = tpl.replace("<!-- pb:systemcss -->", extra)
     tpl = fill(tpl, "swatches", swatches(t, p))
     tpl = fill(tpl, "type", type_rows(t))
     tpl = fill(tpl, "space", space_rows(t, p))
     tpl = fill(tpl, "compnav", nav)
+    start = ('<li class="sg-navgroup">Start</li><li><a href="#agents">Use with an agent</a></li><li class="sg-navgroup">Foundations</li>'
+             '<li><a href="#colour">Colour</a></li><li><a href="#type">Type</a></li><li><a href="#space">Space and shape</a></li>')
+    tpl = fill(tpl, "jumpnav", start + nav)
     tpl = fill(tpl, "components", comps)
     return tpl
 
 
+def other_tokens(systems: list, skip: set) -> str:
+    """Token CSS of the other systems, so the switcher and index can show their colours without raw hex."""
+    return "".join(f'<link rel="stylesheet" href="/{s["id"]}/v{s["version"].split(".")[0]}/tokens.css">' for s in systems if s["id"] not in skip)
+
+
 def root_index(systems: list) -> str:
-    tpl = (ROOT / "site/index.html").read_text()
+    tpl = page_common((ROOT / "site/index.html").read_text(), systems)
     cards = "".join(
-        f'<li class="sg-sys"><div class="sg-swatchbar">{"".join(f"<i style=background:{esc(c)}></i>" for c in s.get("palette", [s["accent"]]))}</div>'
-        f'<h2><a href="/{s["id"]}/">{esc(s["title"])}</a></h2><p>{esc(s["description"])}</p>'
-        f'<div class="sg-meta"><span>v{s["version"]}</span><span>{esc(s["status"])}</span><span>prefix {esc(s["prefix"])}-</span></div></li>'
+        f'<li class="pb-card sg-sys"><a class="pb-cover" href="/{s["id"]}/" aria-label="{esc(s["title"])}"></a>'
+        f'<div class="sg-swatchbar">{"".join("<i style=background:var(--" + s["prefix"] + "-" + c + ")></i>" for c in s.get("palette_tokens", []))}</div>'
+        f'<h2 class="pb-h3">{esc(s["title"])}</h2><p>{esc(s["description"])}</p>'
+        f'<div class="pb-meta"><span>v{s["version"]}</span><span class="pb-badge" data-accent="green">{esc(s["status"])}</span>'
+        f'<span class="pb-mono">{esc(s["prefix"])}-</span></div></li>'
         for s in systems)
-    cards += '<li class="sg-sys is-placeholder"><h2>Next system</h2><p>Add a folder under systems/ and run the build.</p></li>'
-    return fill(tpl, "systems", cards)
+    cards += ('<li class="pb-card sg-sys is-placeholder"><h2 class="pb-h3">Next system</h2>'
+              '<p>Add a folder under systems/ and run the build. It shows up here.</p></li>')
+    return fill(tpl.replace("<!-- pb:systemcss -->", other_tokens(systems, {HUB_SYSTEM})), "systems", cards)
 
 
 def llms_root(systems: list) -> str:
@@ -451,7 +503,7 @@ def main() -> None:
         build_system(d, systems)
     write(PUBLIC / "index.html", root_index(systems))
     write(PUBLIC / "llms.txt", llms_root(systems))
-    write(PUBLIC / "404.html", (ROOT / "site/404.html").read_text())
+    write(PUBLIC / "404.html", page_common((ROOT / "site/404.html").read_text(), systems))
     write(PUBLIC / ".nojekyll", "")
     write(PUBLIC / "CNAME", "design.rr2.dev\n")
     write(PUBLIC / "check.py", (ROOT / "scripts/check.py").read_text())

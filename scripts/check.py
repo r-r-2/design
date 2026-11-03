@@ -13,7 +13,7 @@ Inside the design repo it also has:
 site checks
   errors    unknown-class   a prefixed class (e.g. pb-foo) that the system doesn't define
             raw-color       a hex/rgb/hsl colour in a <style> block, style="" attribute or .css file
-            no-stylesheet   a page that uses the system's classes but doesn't load or inline its CSS
+            no-stylesheet   a full page (with <html> or <head>) that uses the system's classes but doesn't load or inline its CSS
   warnings  raw-font        a font-family that isn't one of the system's font tokens
             off-scale-size  a font-size in px that isn't on the type scale
             unpinned-css    the system's CSS linked without a /v<major>/ path
@@ -21,6 +21,7 @@ site checks
             many-primary    more than one primary button on a page
             img-alt         <img> without an alt attribute
             unlabelled-btn  a <button> with no text and no aria-label
+A page can switch off a rule with <meta name="check-ignore" content="rule-a, rule-b"> (for pattern libraries and the like).
 Exit code 1 if there are errors (or warnings, with --strict).
 """
 import argparse
@@ -159,6 +160,8 @@ def lint_html(path: Path, rel: str, s: dict, out: list) -> None:
     loads = False
     primaries = []
     html_root = None
+    ignored = set()
+    start = len(out)
     for tag, a, line in page.tags:
         cls = (a.get("class") or "").split()
         if tag == "html":
@@ -168,7 +171,10 @@ def lint_html(path: Path, rel: str, s: dict, out: list) -> None:
                 uses = True
                 if c not in s["classes"]:
                     out.append(("error", rel, line, "unknown-class", f'class "{c}" isn\'t defined by the {s["id"]} system'))
-        if f"{p}-btn" in cls and not ({"is-secondary", "is-quiet"} & set(cls)) and tag != "/button":
+        if tag == "meta" and a.get("name") == "check-ignore":
+            ignored.update(r.strip() for r in (a.get("content") or "").split(","))
+        if (f"{p}-btn" in cls and not ({"is-secondary", "is-quiet"} & set(cls)) and tag != "/button"
+                and "disabled" not in a and a.get("aria-disabled") != "true"):
             primaries.append(line)
         if tag == "link" and "stylesheet" in (a.get("rel") or ""):
             href = a.get("href") or ""
@@ -186,12 +192,15 @@ def lint_html(path: Path, rel: str, s: dict, out: list) -> None:
         if f"--{p}-paper" in css:
             loads = True
         css_findings(css, line, rel, s, out)
-    if uses and not loads:
+    whole = any(tag in ("html", "head") for tag, _, _ in page.tags)  # fragments/partials skip page-level checks
+    if uses and whole and not loads:
         out.append(("error", rel, 1, "no-stylesheet", f"uses {p}- classes but doesn't link or inline the {s['id']} CSS"))
     if uses and html_root and p not in html_root[0]:
         out.append(("warning", rel, html_root[1], "no-root-class", f'add class="{p}" to <html>'))
     if len(primaries) > 1:
         out.append(("warning", rel, primaries[1], "many-primary", f"{len(primaries)} primary buttons on one page (lines {', '.join(map(str, primaries))}); keep one"))
+    if ignored:
+        out[start:] = [o for o in out[start:] if o[3] not in ignored]
 
 
 def cmd_site(args) -> int:
@@ -307,6 +316,9 @@ def cmd_all(args) -> int:
         if (d / "system.json").exists():
             bad += check_tokens(json.loads((d / "tokens.json").read_text()), d.name, args.verbose)
             bad += lint_design(d / "DESIGN.md")
+    # The hub (docs/) is styled with the personal system and must pass its checker too.
+    print("hub (docs/):")
+    bad += cmd_site(argparse.Namespace(folder=str(REPO / "docs"), system="personal", major="1", css=None, tokens=None, strict=True))
     return 1 if bad else 0
 
 

@@ -9,7 +9,7 @@ Each system gives an agent everything it needs to build on-brand UI without gues
 - **Copy-ready components**, one HTML snippet each, with their rules.
 - **`check.py`**, a conformance checker an agent runs on the site it just built.
 
-The pages on the site are review sheets for people: live previews, light and dark, with the HTML next to each one.
+The pages on the site are review sheets for people: live previews, light and dark, with the HTML next to each one. The hub itself is styled with the Personal system and passes its checker; each system's previews sit in their own labelled boxes.
 
 ## Systems
 
@@ -55,7 +55,7 @@ docs/                generated and committed; this is what GitHub Pages serves
 
 1. Edit `tokens.json`, `css/`, `components/` or `design.src.md` in a system.
 2. `python3 scripts/build.py`
-3. `python3 scripts/check.py all`: every colour pair must pass AA, and DESIGN.md must lint with 0 errors and 0 warnings (needs `npx`).
+3. `python3 scripts/check.py all`: every colour pair must pass AA, DESIGN.md must lint with 0 errors and 0 warnings (needs `npx`), and the hub pages in `docs/` must pass the checker with no warnings.
 4. `python3 scripts/check.py site systems/<id>/css --system <id>`: the system has to pass its own checker.
 5. `python3 -m http.server -d docs` and look at `/<id>/` in light, dark and at phone width.
 6. Note the change in the system's `CHANGELOG.md`. Bump the patch or minor version for additions and fixes. A breaking change (renamed class, removed token) needs a new major, which creates a new `/v<major>/` folder and leaves the old one in place.

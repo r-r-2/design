@@ -7,7 +7,8 @@ Guidance for AI coding agents working on this repo. (To *use* a design system in
 1. **Confirm before building.** Propose the change in plain words and wait for Rahul's go-ahead before editing. Show a preview (screenshots of the review page, light and dark, served locally with `python3 -m http.server -d docs`) before anything is pushed. Pushing to `main` publishes the site.
 2. **Edit sources, never output.** Sources: `systems/<id>/{tokens.json,design.src.md,css/,components/,system.json}`, `site/`, `scripts/`. Generated: `systems/<id>/DESIGN.md` and everything in `docs/`. Run `python3 scripts/build.py` after every change and commit both.
 3. **Gates before handing over:**
-   - `python3 scripts/check.py all`: AA contrast passes, DESIGN.md lints with 0 errors and 0 warnings.
+   - `python3 scripts/check.py all`: AA contrast passes, DESIGN.md lints with 0 errors and 0 warnings, and the hub in `docs/` passes the checker with no warnings.
+   - `site/hub.css` uses Personal's `--pb-*` tokens only. Each system's previews go in `.sg-preview` boxes that carry that system's root class.
    - `python3 scripts/check.py site systems/<id>/css --system <id>`: 0 errors, 0 warnings. The system must pass its own checker.
    - axe-core shows no WCAG A/AA violations on `/<id>/` in light, dark and at 390px wide, and nothing scrolls sideways.
 4. **Tokens only.** Component CSS uses `var(--<prefix>-*)` for every colour, font, size, radius, shadow and duration. If a value is missing, add a token to `tokens.json` first.
