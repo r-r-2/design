@@ -1,0 +1,16 @@
+<!--
+name: Guide
+group: Signature
+summary: A stick figure in ink lines with a handwritten speech bubble. The one playful element.
+rules:
+- At most one guide per page. It offers help or points at something; it never blocks content.
+- The speech bubble uses Caveat (pb-bubble p). Keep it under 15 words.
+- It waves once on hover or with is-waving; nothing else moves.
+-->
+<div class="pb-guide">
+  <svg class="pb-figure" viewBox="0 0 60 88" aria-hidden="true"><path class="ln wave-arm" d="M30 41 L22 52 L20 61"/><path class="ln" d="M30 41 L38 52 L40 61"/><path class="ln" d="M30 36 L30 63 M30 63 L26 75 L24 86 M30 63 L34 75 L36 86"/><circle class="hd" cx="30" cy="23" r="13"/><circle class="eye" cx="25.5" cy="22" r="1.6"/><circle class="eye" cx="34.5" cy="22" r="1.6"/><path class="mouth" d="M25.5 27 Q30 30.5 34.5 27"/><g class="wv"><path class="ln" d="M30 41 L18 38"/><path class="ln fa" d="M18 38 L12 26"/></g></svg>
+  <div class="pb-bubble" role="status">
+    <p>Hi! Want to see the newest post?</p>
+    <div class="pb-acts"><a class="pb-btn is-small is-secondary" href="#">Show me</a><button class="pb-btn is-quiet" type="button">Later</button></div>
+  </div>
+</div>

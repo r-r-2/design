@@ -1,0 +1,28 @@
+<!--
+name: Header
+group: Layout
+summary: Sticky frosted bar. Avatar and "rr2.dev / section" on the left, menu and theme toggle on the right.
+rules:
+- "rr2.dev" always links to https://rr2.dev; the section name links to the site's home.
+- At most four menu items. Mark the current page with aria-current="page" on the link and wrap its text in <span>.
+- Add is-optional to the menu if it can disappear on phones (in-page jump links). Real site menus should have three short items or fewer so they fit.
+- The toggle needs the small script shown, and its aria-label.
+-->
+<div class="pb-top">
+  <header class="pb-nav">
+    <div class="pb-logo">
+      <a href="https://rr2.dev" aria-label="rr2.dev"><img class="pb-ico" src="https://design.rr2.dev/personal/v1/assets/avatar.webp" width="24" height="24" alt=""><span class="pb-root">rr2.dev</span></a>
+      <span class="pb-slash">/</span><a href="/">section</a>
+    </div>
+    <div class="pb-cluster is-tight">
+      <ul class="pb-menu">
+        <li><a href="/posts/" aria-current="page"><span>Posts</span></a></li>
+        <li><a href="/about/"><span>About</span></a></li>
+      </ul>
+      <button class="pb-toggle" type="button" aria-label="Switch light or dark theme" onclick="var r=document.documentElement,d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=d?'light':'dark';try{localStorage.setItem('pb-theme',r.dataset.theme)}catch(e){}">
+        <svg class="pb-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="pb-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </header>
+</div>

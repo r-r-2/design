@@ -1,0 +1,14 @@
+<!--
+name: Breadcrumbs
+group: Navigation
+summary: Small path above a page title.
+rules:
+- Wrap in <nav aria-label="Breadcrumb">. The last item is the current page, with aria-current="page" and no link.
+-->
+<nav aria-label="Breadcrumb">
+  <ol class="pb-crumbs">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Notes</a></li>
+    <li><span aria-current="page">This page</span></li>
+  </ol>
+</nav>

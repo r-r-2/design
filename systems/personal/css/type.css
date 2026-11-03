@@ -1,0 +1,36 @@
+/* ---- Type classes and layout primitives ----
+   Use these instead of setting font sizes or gaps by hand. */
+.pb-display { margin: 0 0 var(--pb-space-4); color: var(--pb-ink); font: 600 var(--pb-size-hero)/1.08 var(--pb-font-display); letter-spacing: -.02em; text-wrap: balance; }
+.pb-h1 { margin: 0 0 var(--pb-space-3); color: var(--pb-ink); font: 600 var(--pb-size-h1)/var(--pb-leading-tight) var(--pb-font-display); letter-spacing: var(--pb-tracking-heading); text-wrap: balance; }
+.pb-h2 { margin: 0 0 var(--pb-space-3); color: var(--pb-ink); font: 600 var(--pb-size-h2)/var(--pb-leading-snug) var(--pb-font-display); letter-spacing: var(--pb-tracking-heading); text-wrap: balance; }
+.pb-h3 { margin: 0 0 var(--pb-space-2); color: var(--pb-ink); font: 500 var(--pb-size-h3)/1.35 var(--pb-font-display); text-wrap: balance; }
+.pb-h4 { margin: 0 0 var(--pb-space-2); color: var(--pb-ink); font: 600 var(--pb-size-h4)/1.4 var(--pb-font-sans); }
+.pb-lede { margin: 0 0 var(--pb-space-4); color: var(--pb-text); font: 400 var(--pb-size-body)/var(--pb-leading-body) var(--pb-font-sans); }
+.pb-body { margin: 0 0 var(--pb-space-4); color: var(--pb-text); font: 400 var(--pb-size-body)/var(--pb-leading-body) var(--pb-font-sans); }
+.pb-ui { margin: 0; color: var(--pb-text); font: 400 var(--pb-size-ui)/1.5 var(--pb-font-sans); }
+.pb-small { margin: 0; color: var(--pb-muted); font: 400 var(--pb-size-md)/1.6 var(--pb-font-sans); }
+.pb-label { margin: 0 0 var(--pb-space-3); color: var(--pb-muted); font: 600 var(--pb-size-sm)/1.4 var(--pb-font-sans);
+  letter-spacing: var(--pb-tracking-label); text-transform: uppercase; }
+.pb-mono { font-family: var(--pb-font-mono); font-size: .9em; }
+.pb-muted { color: var(--pb-muted); }
+.pb-code { padding: 2px 5px; border-radius: var(--pb-radius-sm); background: var(--pb-sunken); font: .82em var(--pb-font-mono); }
+
+/* Emphasis link (rr2.dev homepage): bold, thick raspberry underline */
+.pb-link { color: var(--pb-ink); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px;
+  text-underline-offset: 4px; text-decoration-color: var(--pb-raspberry); }
+.pb-link:hover { color: var(--pb-raspberry); text-decoration-thickness: 3px; }
+
+/* Layout primitives: a vertical stack and a wrapping row. Gap modifiers: is-tight (8), default (16), is-loose (24), is-section (48). */
+.pb-stack { display: flex; flex-direction: column; gap: var(--pb-space-4); }
+.pb-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--pb-space-3); }
+.pb-stack > *, .pb-cluster > * { margin-top: 0; margin-bottom: 0; }
+.pb-stack.is-tight, .pb-cluster.is-tight { gap: var(--pb-space-2); }
+.pb-stack.is-loose, .pb-cluster.is-loose { gap: var(--pb-space-6); }
+.pb-stack.is-section { gap: var(--pb-space-12); }
+.pb-cluster.is-between { justify-content: space-between; }
+
+@media (max-width: 560px) {
+  .pb-display { font-size: var(--pb-size-hero-sm); }
+  .pb-h1 { font-size: var(--pb-size-h1-sm); }
+  .pb-h2 { font-size: var(--pb-size-xl); }
+}

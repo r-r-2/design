@@ -1,0 +1,22 @@
+<!--
+name: Checkbox and radio
+group: Forms
+summary: Native checkboxes and radios with a raspberry accent, wrapped in their label.
+rules:
+- Group related options in a <fieldset class="pb-fieldset"> with a <legend>.
+- Put the input inside its <label class="pb-check"> so the whole line is clickable.
+- Extra description goes in a <small> inside a <span> next to the input.
+-->
+<div class="pb-stack is-loose">
+  <fieldset class="pb-fieldset">
+    <legend>Email me about</legend>
+    <label class="pb-check"><input type="checkbox" checked> New posts</label>
+    <label class="pb-check"><input type="checkbox"><span>Project updates <small>About once a month.</small></span></label>
+  </fieldset>
+  <fieldset class="pb-fieldset">
+    <legend>Theme</legend>
+    <label class="pb-check"><input type="radio" name="theme-demo" checked> Match my system</label>
+    <label class="pb-check"><input type="radio" name="theme-demo"> Light</label>
+    <label class="pb-check"><input type="radio" name="theme-demo"> Dark</label>
+  </fieldset>
+</div>

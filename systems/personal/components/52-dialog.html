@@ -1,0 +1,21 @@
+<!--
+name: Dialog
+group: Feedback
+summary: A native <dialog> with a title, a sentence and actions in the footer.
+rules:
+- Open with dialog.showModal(). Close with a <form method="dialog"> button so Escape and focus return work for free.
+- Title in an <h2>, linked with aria-labelledby.
+- Actions right-aligned: quiet cancel first, then the primary action.
+- Only for decisions that block. Everything else is a toast or an inline message.
+-->
+<dialog class="pb-dialog" id="confirm" aria-labelledby="confirm-title">
+  <div class="pb-dialog-body">
+    <h2 id="confirm-title">Delete this draft?</h2>
+    <p>The draft and its images will be removed. Published posts aren't affected.</p>
+  </div>
+  <form class="pb-dialog-actions" method="dialog">
+    <button class="pb-btn is-quiet" value="cancel">Cancel</button>
+    <button class="pb-btn" value="delete">Delete draft</button>
+  </form>
+</dialog>
+<button class="pb-btn is-secondary" type="button" onclick="document.getElementById('confirm').showModal()">Open dialog</button>

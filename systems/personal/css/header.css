@@ -1,0 +1,44 @@
+/* ---- Header ----
+   Sticky glass bar. Left: avatar + "rr2.dev / section" crumb. Right: menu + theme toggle.
+   <div class="pb-top"><header class="pb-nav">
+     <div class="pb-logo"><a href="https://rr2.dev"><img class="pb-ico" src="avatar.webp" alt=""><span class="pb-root">rr2.dev</span></a>
+       <span class="pb-slash">/</span><a href="/">notes</a></div>
+     <ul class="pb-menu"><li><a href="/x/" aria-current="page"><span>X</span></a></li></ul>
+   </header></div> */
+.pb-top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--pb-glass);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--pb-line); }
+.pb-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--pb-space-2);
+  max-width: calc(var(--pb-layout-wide) + var(--pb-layout-gap) * 2); min-height: var(--pb-layout-bar); margin: 0 auto; padding: 0 var(--pb-layout-gap); }
+.pb-logo { display: flex; align-items: center; gap: var(--pb-space-2); min-width: 0; font: 700 var(--pb-size-xl)/1 var(--pb-font-sans); white-space: nowrap; }
+.pb-logo a { display: flex; align-items: center; gap: var(--pb-space-2); color: var(--pb-ink); text-decoration: none; }
+.pb-logo .pb-root { color: var(--pb-muted); font-weight: 500; }
+.pb-logo a:hover .pb-root { color: var(--pb-ink); }
+.pb-logo .pb-slash { color: var(--pb-line-strong); font-weight: 400; }
+.pb-ico { display: block; flex: none; width: 24px; height: 24px; border-radius: var(--pb-radius-round); }
+.pb-menu { display: flex; align-items: center; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: var(--pb-size-ui); }
+.pb-menu a { display: block; padding: 0 10px; color: var(--pb-ink); line-height: var(--pb-layout-bar); text-decoration: none; }
+.pb-menu a:hover { color: var(--pb-slate); }
+.pb-menu a[aria-current] { color: var(--pb-slate); }
+.pb-menu a[aria-current] span { border-bottom: 2px solid currentColor; }
+
+/* Theme toggle: one button, sun shows in dark, moon in light.
+   Store the choice in localStorage and set <html data-theme="light|dark">. */
+.pb-toggle { display: grid; place-items: center; width: 36px; height: 36px; margin-left: var(--pb-space-1); padding: 0; border: 0;
+  border-radius: var(--pb-radius-round); background: none; color: var(--pb-ink); cursor: pointer; }
+.pb-toggle:hover { background: var(--pb-sunken); }
+.pb-toggle svg { width: 18px; height: 18px; }
+.pb-toggle .pb-sun, :root[data-theme="dark"] .pb-toggle .pb-moon { display: none; }
+:root[data-theme="dark"] .pb-toggle .pb-sun { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pb-toggle .pb-sun { display: block; }
+  :root:not([data-theme="light"]) .pb-toggle .pb-moon { display: none; }
+}
+
+/* Phones: the avatar still links home, the "rr2.dev" text goes, and a menu marked
+   .is-optional (in-page jump links) hides. Keep real menus to three short items. */
+@media (max-width: 560px) {
+  .pb-nav { padding: 0 16px; }
+  .pb-logo { font-size: var(--pb-size-card); }
+  .pb-logo .pb-root, .pb-menu.is-optional { display: none; }
+  .pb-menu a { padding: 0 6px; font-size: var(--pb-size-compact); }
+}

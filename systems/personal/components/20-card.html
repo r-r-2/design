@@ -1,0 +1,23 @@
+<!--
+name: Card
+group: Content
+summary: White card with a serif title, a two-line summary and a meta row. Lifts on hover when clickable.
+rules:
+- Make the whole card clickable with a .pb-cover link as the first child, with an aria-label of the title.
+- Put cards in a .pb-grid. Never nest cards inside cards.
+- data-accent on the card sets the hover title colour and the tag.
+-->
+<ul class="pb-grid">
+  <li class="pb-card" data-accent="slate">
+    <a class="pb-cover" href="#" aria-label="A short, specific title"></a>
+    <h3>A short, specific title</h3>
+    <p>One or two lines that tell the reader what they will get from this.</p>
+    <div class="pb-meta"><time datetime="2026-11-02">Nov 2</time><span>3 min read</span><span class="pb-tag" data-accent="slate">notes</span></div>
+  </li>
+  <li class="pb-card">
+    <a class="pb-cover" href="#" aria-label="Another title that runs a little longer than the first"></a>
+    <h3>Another title that runs a little longer than the first</h3>
+    <p>Summaries are clamped visually by length, so keep them short.</p>
+    <div class="pb-meta"><time datetime="2026-10-28">Oct 28</time><span>8 min read</span><span class="pb-tag">design</span></div>
+  </li>
+</ul>

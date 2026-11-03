@@ -1,0 +1,30 @@
+/* ---- Navigation: skip link, breadcrumbs, tabs, pagination ---- */
+
+/* First element in <body>. Hidden until focused. */
+.pb-skip { position: absolute; top: 8px; left: 8px; z-index: 50; padding: 8px 14px; border-radius: var(--pb-radius-pill);
+  background: var(--pb-ink); color: var(--pb-paper); font: 600 var(--pb-size-md)/1.4 var(--pb-font-sans); text-decoration: none;
+  transform: translateY(-150%); transition: transform var(--pb-motion-fast); }
+.pb-skip:focus { transform: none; }
+
+.pb-crumbs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--pb-space-1); padding: 0; list-style: none; color: var(--pb-muted); font-size: var(--pb-size-sm); }
+.pb-crumbs li + li::before { content: "»"; margin-right: 6px; color: var(--pb-line-strong); }
+.pb-crumbs a { color: inherit; text-decoration: none; }
+.pb-crumbs a:hover { color: var(--pb-ink); text-decoration: underline; }
+.pb-crumbs [aria-current] { color: var(--pb-ink); }
+
+/* Tabs as links between pages or sections. No JavaScript. */
+.pb-tabs { display: flex; gap: var(--pb-space-1); margin: 0 0 var(--pb-space-6); padding: 0; overflow-x: auto; list-style: none;
+  border-bottom: 1px solid var(--pb-line); scrollbar-width: none; }
+.pb-tabs a { display: block; padding: 10px 12px; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--pb-muted);
+  font: 500 var(--pb-size-ui)/1.4 var(--pb-font-sans); text-decoration: none; white-space: nowrap; }
+.pb-tabs a:hover { color: var(--pb-ink); }
+.pb-tabs a[aria-current] { border-bottom-color: var(--pb-raspberry); color: var(--pb-ink); font-weight: 600; }
+
+/* Pagination: previous / count / next */
+.pb-pager { display: flex; align-items: center; justify-content: space-between; gap: var(--pb-space-3); margin-top: var(--pb-space-6); }
+.pb-pager a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1px solid var(--pb-line);
+  border-radius: var(--pb-radius-pill); background: var(--pb-surface); color: var(--pb-ink); font: 500 var(--pb-size-md)/1 var(--pb-font-sans); text-decoration: none; }
+.pb-pager a:hover { border-color: var(--pb-line-strong); background: var(--pb-surface-hover); }
+.pb-pager a[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.pb-pager span { color: var(--pb-muted); font-size: var(--pb-size-sm); font-variant-numeric: tabular-nums; }
+.pb-pager svg { width: 14px; height: 14px; }

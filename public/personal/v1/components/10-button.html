@@ -1,0 +1,18 @@
+<!--
+name: Button
+group: Actions
+summary: Pill buttons. Primary (raspberry), secondary (outlined), quiet (text), and small.
+rules:
+- One primary button per view, for the single most important action.
+- Secondary for every other action. Quiet for dismiss, cancel and "see all".
+- Use <a> for navigation and <button type="button"> for actions. Never a <div>.
+- Slate is not a button colour.
+- Disabled: add disabled to a <button>, or aria-disabled="true" to an <a>.
+-->
+<div class="pb-cluster">
+  <button class="pb-btn" type="button">Save changes</button>
+  <a class="pb-btn is-secondary" href="#">View details</a>
+  <button class="pb-btn is-secondary is-small" type="button">Small</button>
+  <button class="pb-btn is-quiet" type="button">Cancel</button>
+  <button class="pb-btn" type="button" disabled>Disabled</button>
+</div>

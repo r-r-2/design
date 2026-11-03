@@ -1,0 +1,15 @@
+<!--
+name: Filter chips
+group: Actions
+summary: Pill links for filtering a list by section. The current one fills with its accent.
+rules:
+- Mark the active chip with aria-current="page" (links) or aria-pressed="true" (buttons).
+- Give each chip the accent of the section it filters with data-accent. The "All" chip keeps the default.
+- Counts go in a <span class="pb-n">.
+-->
+<ul class="pb-chips">
+  <li><a href="#" aria-current="page">All <span class="pb-n">24</span></a></li>
+  <li><a href="#" data-accent="slate">Notes <span class="pb-n">17</span></a></li>
+  <li><a href="#" data-accent="green">Guides <span class="pb-n">5</span></a></li>
+  <li><a href="#" data-accent="amber">Reports <span class="pb-n">2</span></a></li>
+</ul>

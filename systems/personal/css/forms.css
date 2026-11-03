@@ -1,0 +1,28 @@
+/* ---- Form fields ----
+   <div class="pb-field"><label for="x">Label</label><input class="pb-input" id="x"><p class="pb-help">Help</p></div>
+   Error: add is-error to .pb-field, aria-invalid="true" and aria-describedby on the input. */
+.pb-field { display: grid; gap: 6px; }
+.pb-field > label, .pb-field > .pb-field-label { color: var(--pb-ink); font: 600 var(--pb-size-md)/1.4 var(--pb-font-sans); }
+.pb-field .pb-optional { color: var(--pb-muted); font-weight: 400; }
+.pb-input, .pb-textarea, .pb-select { width: 100%; min-height: 40px; padding: 8px 12px; border: 1px solid var(--pb-line-strong);
+  border-radius: var(--pb-radius-md); background: var(--pb-surface); color: var(--pb-ink); font: 400 var(--pb-size-ui)/1.5 var(--pb-font-sans);
+  transition: border-color var(--pb-motion-fast), box-shadow var(--pb-motion-fast); }
+.pb-textarea { min-height: 96px; resize: vertical; }
+.pb-select { appearance: none; padding-right: 36px; cursor: pointer;
+  background: var(--pb-surface) no-repeat right 12px center / 12px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%235d636d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); }
+.pb-input::placeholder, .pb-textarea::placeholder { color: var(--pb-muted); opacity: 1; }
+.pb-input:hover, .pb-textarea:hover, .pb-select:hover { border-color: var(--pb-muted); }
+.pb .pb-input:focus-visible, .pb .pb-textarea:focus-visible, .pb .pb-select:focus-visible,
+.pb-input:focus, .pb-textarea:focus, .pb-select:focus { outline: none; border-color: var(--pb-slate); box-shadow: 0 0 0 3px var(--pb-slate-soft); }
+.pb-input[disabled], .pb-textarea[disabled], .pb-select[disabled] { background: var(--pb-sunken); color: var(--pb-muted); cursor: not-allowed; }
+.pb-help { margin: 0; color: var(--pb-muted); font-size: var(--pb-size-sm); line-height: 1.5; }
+.pb-field.is-error .pb-input, .pb-field.is-error .pb-textarea, .pb-field.is-error .pb-select { border-color: var(--pb-red); }
+.pb-field.is-error .pb-input:focus, .pb-field.is-error .pb-textarea:focus { box-shadow: 0 0 0 3px var(--pb-red-soft); }
+.pb-field.is-error .pb-help { color: var(--pb-red); font-weight: 500; }
+
+/* Checkbox and radio: native inputs, accent-coloured */
+.pb-check { display: flex; align-items: flex-start; gap: 10px; min-height: 24px; color: var(--pb-text); font: 400 var(--pb-size-ui)/1.5 var(--pb-font-sans); cursor: pointer; }
+.pb-check input { flex: none; width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--pb-raspberry); cursor: pointer; }
+.pb-check small { display: block; color: var(--pb-muted); font-size: var(--pb-size-sm); }
+.pb-fieldset { display: grid; gap: 10px; margin: 0; padding: 0; border: 0; }
+.pb-fieldset legend { margin-bottom: 4px; padding: 0; color: var(--pb-ink); font: 600 var(--pb-size-md)/1.4 var(--pb-font-sans); }

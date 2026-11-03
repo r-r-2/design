@@ -1,0 +1,13 @@
+<!--
+name: Pagination
+group: Navigation
+summary: Previous and next pills with a page count between them.
+rules:
+- Disable the end you are at with aria-disabled="true".
+- Use rel="prev" and rel="next" on the links.
+-->
+<nav class="pb-pager" aria-label="Pagination">
+  <a href="#" rel="prev" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Newer</a>
+  <span>Page 1 of 4</span>
+  <a href="#" rel="next">Older<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+</nav>

@@ -1,0 +1,31 @@
+<!--
+name: Text field
+group: Forms
+summary: Label, input and help text stacked. Also textarea and select. Error state in red.
+rules:
+- Every input has a visible <label for>. Placeholders are examples, never labels.
+- Help text goes under the input and is linked with aria-describedby.
+- Error: add is-error to .pb-field, aria-invalid="true" to the input, and say how to fix it in the help text.
+- Mark optional fields, not required ones.
+-->
+<form class="pb-stack" onsubmit="return false">
+  <div class="pb-field">
+    <label for="f-name">Name</label>
+    <input class="pb-input" id="f-name" name="name" autocomplete="name" placeholder="Alex Lee">
+  </div>
+  <div class="pb-field is-error">
+    <label for="f-email">Email</label>
+    <input class="pb-input" id="f-email" name="email" type="email" value="alex@" aria-invalid="true" aria-describedby="f-email-help">
+    <p class="pb-help" id="f-email-help">Add the part after the @, like alex@example.com.</p>
+  </div>
+  <div class="pb-field">
+    <label for="f-topic">Topic</label>
+    <select class="pb-select" id="f-topic" name="topic"><option>General</option><option>Feedback</option></select>
+  </div>
+  <div class="pb-field">
+    <label for="f-msg">Message <span class="pb-optional">(optional)</span></label>
+    <textarea class="pb-textarea" id="f-msg" name="message" aria-describedby="f-msg-help"></textarea>
+    <p class="pb-help" id="f-msg-help">A few lines is plenty.</p>
+  </div>
+  <div class="pb-cluster"><button class="pb-btn" type="submit">Send</button><button class="pb-btn is-quiet" type="reset">Clear</button></div>
+</form>

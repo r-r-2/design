@@ -1,0 +1,13 @@
+# design.rr2.dev
+
+> Design systems by Rahul Ravikumar, written for AI coding agents. Each system has a DESIGN.md (tokens in YAML front matter, rules and copy-ready component markup in the body), versioned CSS, and a conformance checker.
+
+Before building UI for a site that uses one of these systems: read its DESIGN.md, load its versioned brand.css, copy component markup exactly, and run the checker.
+
+## Systems
+
+- [Personal brand](https://design.rr2.dev/personal/v1/DESIGN.md): Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev. Prefix `pb-`. CSS: https://design.rr2.dev/personal/v1/brand.css
+
+## Tools
+
+- [check.py](https://design.rr2.dev/check.py): `python3 check.py site <folder> --system <id>` lints a site for raw colours, unknown fonts, off-scale sizes and unknown classes.

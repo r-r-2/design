@@ -1,0 +1,24 @@
+/* ---- Base ----
+   Opt in with class="pb" on <html> or <body>, so the brand never fights a page's own CSS. */
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+
+.pb { background: var(--pb-paper); color: var(--pb-ink); font: 400 var(--pb-size-body)/var(--pb-leading-body) var(--pb-font-sans);
+  overflow-wrap: break-word; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; text-size-adjust: 100%; }
+body.pb, .pb body { margin: 0; }
+.pb *, .pb *::before, .pb *::after { box-sizing: border-box; }
+.pb [hidden] { display: none !important; }
+.pb :focus-visible { outline: 2px solid var(--pb-slate); outline-offset: 3px; border-radius: var(--pb-radius-sm); }
+.pb ::selection { background: var(--pb-raspberry-soft); color: var(--pb-ink); }
+
+/* Reading column and wide column */
+.pb-wrap { max-width: calc(var(--pb-layout-column) + var(--pb-layout-gap) * 2); margin: 0 auto;
+  padding: var(--pb-layout-gap) var(--pb-layout-gap) calc(var(--pb-layout-gap) * 2); }
+.pb-wrap.is-wide { max-width: calc(var(--pb-layout-wide) + var(--pb-layout-gap) * 2); }
+
+/* Screen-reader only */
+.pb-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pb *, .pb *::before, .pb *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

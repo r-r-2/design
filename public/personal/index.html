@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal brand design system v1.0.0 — design.rr2.dev</title>
+<meta name="description" content="Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="alternate" type="text/markdown" href="/personal/v1/DESIGN.md" title="DESIGN.md">
+<link rel="stylesheet" href="/hub.css">
+<link rel="stylesheet" href="/personal/v1/brand.css">
+<script>try{var t=localStorage.getItem('sg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="sg-skip" href="#main">Skip to content</a>
+<div class="sg-bar"><div class="sg-bar-in">
+  <nav class="sg-crumb" aria-label="Site">
+    <a class="sg-home" href="/">design</a><span class="sg-sep">/</span>
+    <details class="sg-switch">
+      <summary aria-label="Switch design system">Personal brand <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1.5l5 5 5-5"/></svg></summary>
+      <ul class="sg-switch-list"><li><a href="/personal/" aria-current=page><span class="sg-dot" style="background:#a8325e"></span><span><b>Personal brand</b><small>v1 · stable</small></span></a></li><li><a href="/"><span class="sg-dot"></span><span><b>All systems</b></span></a></li></ul>
+    </details>
+  </nav>
+  <div class="sg-tools">
+    <button class="sg-iconbtn" type="button" id="sg-theme" aria-label="Switch light or dark theme">
+      <svg class="sg-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="sg-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+</div></div>
+
+<div class="sg-layout">
+  <nav class="sg-side" aria-label="On this page">
+    <ul>
+      <li class="sg-navgroup">Start</li>
+      <li><a href="#agents">Use with an agent</a></li>
+      <li class="sg-navgroup">Foundations</li>
+      <li><a href="#colour">Colour</a></li>
+      <li><a href="#type">Type</a></li>
+      <li><a href="#space">Space and shape</a></li>
+      <li class="sg-navgroup">Text</li><li><a href="#c-type">Type</a></li><li class="sg-navgroup">Layout</li><li><a href="#c-page">Page skeleton</a></li><li><a href="#c-header">Header</a></li><li><a href="#c-footer">Footer</a></li><li><a href="#c-stack-cluster">Stack and cluster</a></li><li class="sg-navgroup">Actions</li><li><a href="#c-button">Button</a></li><li><a href="#c-icon-button">Icon button</a></li><li><a href="#c-chips">Filter chips</a></li><li class="sg-navgroup">Content</li><li><a href="#c-tags">Tags and badges</a></li><li><a href="#c-meta">Meta row</a></li><li><a href="#c-card">Card</a></li><li><a href="#c-list">Grouped list with date tiles</a></li><li><a href="#c-callout">Callout</a></li><li><a href="#c-content">Long-form content</a></li><li class="sg-navgroup">Forms</li><li><a href="#c-field">Text field</a></li><li><a href="#c-check">Checkbox and radio</a></li><li class="sg-navgroup">Navigation</li><li><a href="#c-tabs">Tabs</a></li><li><a href="#c-crumbs">Breadcrumbs</a></li><li><a href="#c-pager">Pagination</a></li><li class="sg-navgroup">Data</li><li><a href="#c-table">Table</a></li><li><a href="#c-empty">Empty state</a></li><li class="sg-navgroup">Feedback</li><li><a href="#c-dialog">Dialog</a></li><li><a href="#c-toast">Toast</a></li><li class="sg-navgroup">Signature</li><li><a href="#c-guide">Guide</a></li>
+    </ul>
+  </nav>
+
+  <main class="sg-main" id="main">
+    <p class="sg-eyebrow">Design system</p>
+    <h1 class="sg-title">Personal brand</h1>
+    <p class="sg-lede">Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev.</p>
+    <ul class="sg-facts">
+      <li>Version <b>1.0.0</b></li><li>Status <b>stable</b></li><li>Prefix <b>pb-</b></li><li>Used by <b>rr2.dev · notes.rr2.dev · resume.rr2.dev</b></li>
+    </ul>
+
+    <section class="sg-agent" id="agents" aria-labelledby="agents-h">
+      <h2 id="agents-h">Use with an agent</h2>
+      <p>Paste this into the AGENTS.md (or CLAUDE.md) of any site that should follow this system.</p>
+      <div class="sg-snippet"><pre id="agent-line" tabindex="0">## UI
+This site uses the Personal brand design system v1.
+- Before any UI work, read https://design.rr2.dev/personal/v1/DESIGN.md and follow it.
+- Load https://design.rr2.dev/personal/v1/brand.css and put class="pb" on &lt;html&gt;.
+- Copy component markup from DESIGN.md exactly. Use only --pb-* tokens and pb- classes.
+- After changing UI, run: curl -sO https://design.rr2.dev/check.py &amp;&amp; python3 check.py site . --system personal
+  Fix every error before handing over.</pre>
+        <button class="sg-copybtn" type="button" data-copy-el="agent-line">Copy</button></div>
+      <ul class="sg-links">
+        <li><a href="/personal/v1/DESIGN.md">DESIGN.md</a></li>
+        <li><a href="/personal/v1/brand.css">brand.css</a></li>
+        <li><a href="/personal/v1/brand.inline.min.css">brand.inline.min.css</a></li>
+        <li><a href="/personal/v1/tokens.json">tokens.json</a></li>
+        <li><a href="/personal/v1/llms.txt">llms.txt</a></li>
+        <li><a href="/personal/v1/CHANGELOG.md">CHANGELOG.md</a></li>
+        <li><a href="/check.py">check.py</a></li>
+      </ul>
+    </section>
+
+    <h2 class="sg-h2" id="colour">Colour</h2>
+    <p>Swatches follow the theme toggle. Values are light · dark. Contrast is measured on paper.</p>
+    <div class="sg-preview pb sg-fpanel"><p class="pb-label">Text on paper</p><div class="sg-textsw"><div><span style="color:var(--pb-ink)">Aa ink</span><code>--pb-ink</code><small>#1f2329 · #dadadb</small><small>14.3:1 · 11.9:1 on paper</small></div><div><span style="color:var(--pb-text)">Aa text</span><code>--pb-text</code><small>#2c3038 · #c4c4c5</small><small>12.0:1 · 9.6:1 on paper</small></div><div><span style="color:var(--pb-muted)">Aa muted</span><code>--pb-muted</code><small>#5d636d · #a8a9aa</small><small>5.5:1 · 7.1:1 on paper</small></div></div><p class="pb-label">Brand</p><ul class="sg-sw"><li><i style="background:var(--pb-raspberry)"></i><div><code>--pb-raspberry</code><small class="sg-hex">#a8325e · #ec8db1</small><small>Primary brand colour</small></div></li><li><i style="background:var(--pb-raspberry-strong)"></i><div><code>--pb-raspberry-strong</code><small class="sg-hex">#8f2950 · #f4a9c5</small><small>Primary hover/pressed</small></div></li><li><i style="background:var(--pb-raspberry-soft)"></i><div><code>--pb-raspberry-soft</code><small class="sg-hex">#f8e5ed · #3a1f2b</small><small>Primary tint for tags and highlights</small></div></li><li><i style="background:var(--pb-slate)"></i><div><code>--pb-slate</code><small class="sg-hex">#3a5a80 · #93b4da</small><small>Secondary brand colour: links, focus rings, current page</small></div></li><li><i style="background:var(--pb-slate-strong)"></i><div><code>--pb-slate-strong</code><small class="sg-hex">#2f6690 · #82b6dd</small><small>Secondary accent for sections and dates</small></div></li><li><i style="background:var(--pb-slate-soft)"></i><div><code>--pb-slate-soft</code><small class="sg-hex">#e2edf6 · #1c2b38</small><small>Secondary tint</small></div></li></ul><p class="pb-label">Surfaces and lines</p><ul class="sg-sw"><li><i style="background:var(--pb-paper)"></i><div><code>--pb-paper</code><small class="sg-hex">#f3f4f6 · #1d1e20</small><small>Page background</small></div></li><li><i style="background:var(--pb-surface)"></i><div><code>--pb-surface</code><small class="sg-hex">#ffffff · #2e2e33</small><small>Cards, panels, bubbles</small></div></li><li><i style="background:var(--pb-surface-hover)"></i><div><code>--pb-surface-hover</code><small class="sg-hex">#f6f7f9 · #34353a</small><small>Row and card hover</small></div></li><li><i style="background:var(--pb-sunken)"></i><div><code>--pb-sunken</code><small class="sg-hex">#e9ecf0 · #37383e</small><small>Inline code, icon-button hover</small></div></li><li><i style="background:var(--pb-line)"></i><div><code>--pb-line</code><small class="sg-hex">#e2e5ea · #3a3b3f</small><small>Hairline borders and dividers</small></div></li><li><i style="background:var(--pb-line-strong)"></i><div><code>--pb-line-strong</code><small class="sg-hex">#cdd1d8 · #4a4b4f</small><small>Dashed outlines, slash in the header, inactive dots. Decoration only, never text</small></div></li></ul><p class="pb-label">Status</p><ul class="sg-sw"><li><i style="background:var(--pb-amber)"></i><div><code>--pb-amber</code><small class="sg-hex">#995700 · #f2a94a</small><small>New, warnings</small></div></li><li><i style="background:var(--pb-amber-soft)"></i><div><code>--pb-amber-soft</code><small class="sg-hex">#fff1dc · #3a2c19</small></div></li><li><i style="background:var(--pb-green)"></i><div><code>--pb-green</code><small class="sg-hex">#0e7553 · #7fcca2</small><small>Success, ok states</small></div></li><li><i style="background:var(--pb-green-soft)"></i><div><code>--pb-green-soft</code><small class="sg-hex">#ddf3ea · #1f3328</small></div></li><li><i style="background:var(--pb-red)"></i><div><code>--pb-red</code><small class="sg-hex">#c2302f · #ef8f8e</small><small>Errors, bad states</small></div></li><li><i style="background:var(--pb-red-soft)"></i><div><code>--pb-red-soft</code><small class="sg-hex">#fbe6e6 · #3a2020</small></div></li></ul></div>
+
+    <h2 class="sg-h2" id="type">Type</h2>
+    <p>Use the class, not the numbers.</p>
+    <div class="sg-preview pb sg-fpanel"><div class="sg-trow"><div><code>.pb-display</code><small>headline-display · 52px/600</small></div><div><span class="pb-display" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-h1</code><small>headline-lg · 40px/600</small></div><div><span class="pb-h1" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-h2</code><small>headline-md · 28px/600</small></div><div><span class="pb-h2" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-h3</code><small>headline-sm · 22px/500</small></div><div><span class="pb-h3" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-h4</code><small>title · 18px/600</small></div><div><span class="pb-h4" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-body</code><small>body-lg · 18px/400</small></div><div><span class="pb-body" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-ui</code><small>body-md · 16px/400</small></div><div><span class="pb-ui" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-small</code><small>body-sm · 14px/400</small></div><div><span class="pb-small" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-label</code><small>label-md · 13px/600</small></div><div><span class="pb-label" style="margin:0">The quick brown fox</span></div></div><div class="sg-trow"><div><code>.pb-tag</code><small>label-sm · 12px/600</small></div><div><span class="pb-tag">label-sm</span></div></div><div class="sg-trow"><div><code>.pb-code</code><small>code · 14px/400</small></div><div><code class="pb-code">code sample</code></div></div><div class="sg-trow"><div><code>.pb-hand</code><small>hand · 19px/600</small></div><div><span class="pb-hand">Handwritten aside</span></div></div></div>
+
+    <h2 class="sg-h2" id="space">Space and shape</h2>
+    <p>4px spacing steps, 8px corners, hairline borders, faint shadows.</p>
+    <div class="sg-preview pb sg-fpanel"><div class="sg-panel"><div class="sg-space"><div><i style="width:var(--pb-space-1);height:var(--pb-space-1)"></i><code>1</code><small>4px</small></div><div><i style="width:var(--pb-space-2);height:var(--pb-space-2)"></i><code>2</code><small>8px</small></div><div><i style="width:var(--pb-space-3);height:var(--pb-space-3)"></i><code>3</code><small>12px</small></div><div><i style="width:var(--pb-space-4);height:var(--pb-space-4)"></i><code>4</code><small>16px</small></div><div><i style="width:var(--pb-space-5);height:var(--pb-space-5)"></i><code>5</code><small>20px</small></div><div><i style="width:var(--pb-space-6);height:var(--pb-space-6)"></i><code>6</code><small>24px</small></div><div><i style="width:var(--pb-space-8);height:var(--pb-space-8)"></i><code>8</code><small>32px</small></div><div><i style="width:var(--pb-space-9);height:var(--pb-space-9)"></i><code>9</code><small>36px</small></div><div><i style="width:var(--pb-space-12);height:var(--pb-space-12)"></i><code>12</code><small>48px</small></div><div><i style="width:var(--pb-space-18);height:var(--pb-space-18)"></i><code>18</code><small>72px</small></div></div></div><div class="sg-shapes"><div style="border-radius:var(--pb-radius-sm)"><code>radius-sm</code><small>4px</small></div><div style="border-radius:var(--pb-radius-md)"><code>radius-md</code><small>8px</small></div><div style="border-radius:var(--pb-radius-lg)"><code>radius-lg</code><small>12px</small></div><div style="border-radius:var(--pb-radius-pill)"><code>radius-pill</code><small>999px</small></div><div style="border-radius:var(--pb-radius-md);box-shadow:var(--pb-shadow-rest)"><code>shadow-rest</code></div><div style="border-radius:var(--pb-radius-md);box-shadow:var(--pb-shadow-lift)"><code>shadow-lift</code></div></div></div>
+
+    <h2 class="sg-h2" id="components">Components</h2>
+    <p>Each one: a live preview, the exact HTML to copy, and the rules that go with it.</p>
+    <section class="sg-comp" id="c-type"><div class="sg-comp-head"><p class="sg-eyebrow">Text</p><h3>Type</h3><p>Type classes for every text style. Use these instead of setting sizes.</p></div><div class="sg-preview pb"><div class="pb-stack is-tight">
+  <p class="pb-label">Section label</p>
+  <h1 class="pb-display">Display heading</h1>
+  <h1 class="pb-h1">Page title</h1>
+  <h2 class="pb-h2">Section heading</h2>
+  <h3 class="pb-h3">Sub-section heading</h3>
+  <h4 class="pb-h4">Small heading</h4>
+  <p class="pb-lede">A lede introduces the page in a sentence or two.</p>
+  <p class="pb-ui">Interface text for lists, menus and forms.</p>
+  <p class="pb-small">Small text for summaries and captions.</p>
+  <p class="pb-ui">Inline <code class="pb-code">code</code> and an <a class="pb-link" href="#">emphasis link</a>.</p>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-type">Copy</button><pre tabindex="0" aria-label="Type HTML"><code id="code-c-type">&lt;div class=&quot;pb-stack is-tight&quot;&gt;
+  &lt;p class=&quot;pb-label&quot;&gt;Section label&lt;/p&gt;
+  &lt;h1 class=&quot;pb-display&quot;&gt;Display heading&lt;/h1&gt;
+  &lt;h1 class=&quot;pb-h1&quot;&gt;Page title&lt;/h1&gt;
+  &lt;h2 class=&quot;pb-h2&quot;&gt;Section heading&lt;/h2&gt;
+  &lt;h3 class=&quot;pb-h3&quot;&gt;Sub-section heading&lt;/h3&gt;
+  &lt;h4 class=&quot;pb-h4&quot;&gt;Small heading&lt;/h4&gt;
+  &lt;p class=&quot;pb-lede&quot;&gt;A lede introduces the page in a sentence or two.&lt;/p&gt;
+  &lt;p class=&quot;pb-ui&quot;&gt;Interface text for lists, menus and forms.&lt;/p&gt;
+  &lt;p class=&quot;pb-small&quot;&gt;Small text for summaries and captions.&lt;/p&gt;
+  &lt;p class=&quot;pb-ui&quot;&gt;Inline &lt;code class=&quot;pb-code&quot;&gt;code&lt;/code&gt; and an &lt;a class=&quot;pb-link&quot; href=&quot;#&quot;&gt;emphasis link&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>One pb-display or pb-h1 per page. Section headings are pb-h2, sub-sections pb-h3.</li><li>pb-lede goes right under the page title; pb-label goes above a heading or a group.</li><li>Inside long-form content, plain &lt;h2&gt;/&lt;h3&gt;/&lt;p&gt; in .pb-content are styled for you.</li></ul></section><section class="sg-comp" id="c-page"><div class="sg-comp-head"><p class="sg-eyebrow">Layout</p><h3>Page skeleton</h3><p>Every page starts from this. Skip link, sticky header, main column, footer.</p></div><details class="sg-code" open><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-page">Copy</button><pre tabindex="0" aria-label="Page skeleton HTML"><code id="code-c-page">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; class=&quot;pb&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Page title — rr2.dev&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://design.rr2.dev/personal/v1/brand.css&quot;&gt;
+  &lt;script&gt;try{var t=localStorage.getItem(&#x27;pb-theme&#x27;);if(t)document.documentElement.dataset.theme=t}catch(e){}&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a class=&quot;pb-skip&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+  &lt;!-- Header component here --&gt;
+  &lt;main class=&quot;pb-wrap&quot; id=&quot;main&quot;&gt;
+    &lt;h1 class=&quot;pb-h1&quot;&gt;Page title&lt;/h1&gt;
+    &lt;p class=&quot;pb-lede&quot;&gt;One or two sentences that say what this page is for.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;!-- Footer component here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></details><ul class=sg-rules><li>Put class=&quot;pb&quot; on &lt;html&gt; and load brand.css (or inline brand.inline.min.css).</li><li>Use &lt;main class=&quot;pb-wrap&quot;&gt; for reading pages and &lt;main class=&quot;pb-wrap is-wide&quot;&gt; for listings.</li><li>The skip link is the first thing in &lt;body&gt; and points at the main element&#x27;s id.</li><li>Keep the inline theme script in &lt;head&gt; so the saved theme applies before paint.</li></ul></section><section class="sg-comp" id="c-header"><div class="sg-comp-head"><p class="sg-eyebrow">Layout</p><h3>Header</h3><p>Sticky frosted bar. Avatar and &quot;rr2.dev / section&quot; on the left, menu and theme toggle on the right.</p></div><div class="sg-preview pb"><div class="pb-top">
+  <header class="pb-nav">
+    <div class="pb-logo">
+      <a href="https://rr2.dev" aria-label="rr2.dev"><img class="pb-ico" src="/personal/v1/assets/avatar.webp" width="24" height="24" alt=""><span class="pb-root">rr2.dev</span></a>
+      <span class="pb-slash">/</span><a href="/">section</a>
+    </div>
+    <div class="pb-cluster is-tight">
+      <ul class="pb-menu">
+        <li><a href="/posts/" aria-current="page"><span>Posts</span></a></li>
+        <li><a href="/about/"><span>About</span></a></li>
+      </ul>
+      <button class="pb-toggle" type="button" aria-label="Switch light or dark theme" onclick="var r=document.documentElement,d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=d?'light':'dark';try{localStorage.setItem('pb-theme',r.dataset.theme)}catch(e){}">
+        <svg class="pb-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="pb-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </header>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-header">Copy</button><pre tabindex="0" aria-label="Header HTML"><code id="code-c-header">&lt;div class=&quot;pb-top&quot;&gt;
+  &lt;header class=&quot;pb-nav&quot;&gt;
+    &lt;div class=&quot;pb-logo&quot;&gt;
+      &lt;a href=&quot;https://rr2.dev&quot; aria-label=&quot;rr2.dev&quot;&gt;&lt;img class=&quot;pb-ico&quot; src=&quot;https://design.rr2.dev/personal/v1/assets/avatar.webp&quot; width=&quot;24&quot; height=&quot;24&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;pb-root&quot;&gt;rr2.dev&lt;/span&gt;&lt;/a&gt;
+      &lt;span class=&quot;pb-slash&quot;&gt;/&lt;/span&gt;&lt;a href=&quot;/&quot;&gt;section&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;pb-cluster is-tight&quot;&gt;
+      &lt;ul class=&quot;pb-menu&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/posts/&quot; aria-current=&quot;page&quot;&gt;&lt;span&gt;Posts&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/about/&quot;&gt;&lt;span&gt;About&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;pb-toggle&quot; type=&quot;button&quot; aria-label=&quot;Switch light or dark theme&quot; onclick=&quot;var r=document.documentElement,d=r.dataset.theme?r.dataset.theme===&#x27;dark&#x27;:matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).matches;r.dataset.theme=d?&#x27;light&#x27;:&#x27;dark&#x27;;try{localStorage.setItem(&#x27;pb-theme&#x27;,r.dataset.theme)}catch(e){}&quot;&gt;
+        &lt;svg class=&quot;pb-moon&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z&quot;/&gt;&lt;/svg&gt;
+        &lt;svg class=&quot;pb-sun&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;5&quot;/&gt;&lt;path d=&quot;M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42&quot;/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>&quot;rr2.dev&quot; always links to https://rr2.dev; the section name links to the site&#x27;s home.</li><li>At most four menu items. Mark the current page with aria-current=&quot;page&quot; on the link and wrap its text in &lt;span&gt;.</li><li>Add is-optional to the menu if it can disappear on phones (in-page jump links). Real site menus should have three short items or fewer so they fit.</li><li>The toggle needs the small script shown, and its aria-label.</li></ul></section><section class="sg-comp" id="c-footer"><div class="sg-comp-head"><p class="sg-eyebrow">Layout</p><h3>Footer</h3><p>Quiet, centred footer with social icons and one line of links.</p></div><div class="sg-preview pb"><footer class="pb-footer">
+  <div class="pb-social">
+    <a href="https://github.com/r-r-2" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+    <a href="https://x.com/rahul_r007" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h6.9l4.8 6.3L18.9 2zm-1.2 18h1.7L6.4 3.9H4.6L17.7 20z"/></svg></a>
+  </div>
+  <p>Part of <a href="https://rr2.dev">rr2.dev</a> · <a href="/about/">About</a></p>
+</footer>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-footer">Copy</button><pre tabindex="0" aria-label="Footer HTML"><code id="code-c-footer">&lt;footer class=&quot;pb-footer&quot;&gt;
+  &lt;div class=&quot;pb-social&quot;&gt;
+    &lt;a href=&quot;https://github.com/r-r-2&quot; aria-label=&quot;GitHub&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;
+    &lt;a href=&quot;https://x.com/rahul_r007&quot; aria-label=&quot;X&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h6.9l4.8 6.3L18.9 2zm-1.2 18h1.7L6.4 3.9H4.6L17.7 20z&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Part of &lt;a href=&quot;https://rr2.dev&quot;&gt;rr2.dev&lt;/a&gt; · &lt;a href=&quot;/about/&quot;&gt;About&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre></details><ul class=sg-rules><li>Keep it to the social row and one line. No sitemaps, no newsletter boxes.</li><li>Every icon link needs an aria-label.</li></ul></section><section class="sg-comp" id="c-stack-cluster"><div class="sg-comp-head"><p class="sg-eyebrow">Layout</p><h3>Stack and cluster</h3><p>Layout primitives for spacing. A stack spaces children vertically; a cluster lays them out in a wrapping row.</p></div><div class="sg-preview pb"><div class="pb-stack">
+  <div class="pb-cluster is-between">
+    <h2 class="pb-h3">Recent posts</h2>
+    <a class="pb-btn is-quiet" href="#">See all</a>
+  </div>
+  <div class="pb-cluster is-tight">
+    <span class="pb-tag">design</span><span class="pb-tag" data-accent="slate">notes</span><span class="pb-tag" data-accent="neutral">draft</span>
+  </div>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-stack-cluster">Copy</button><pre tabindex="0" aria-label="Stack and cluster HTML"><code id="code-c-stack-cluster">&lt;div class=&quot;pb-stack&quot;&gt;
+  &lt;div class=&quot;pb-cluster is-between&quot;&gt;
+    &lt;h2 class=&quot;pb-h3&quot;&gt;Recent posts&lt;/h2&gt;
+    &lt;a class=&quot;pb-btn is-quiet&quot; href=&quot;#&quot;&gt;See all&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pb-cluster is-tight&quot;&gt;
+    &lt;span class=&quot;pb-tag&quot;&gt;design&lt;/span&gt;&lt;span class=&quot;pb-tag&quot; data-accent=&quot;slate&quot;&gt;notes&lt;/span&gt;&lt;span class=&quot;pb-tag&quot; data-accent=&quot;neutral&quot;&gt;draft&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Use these instead of margins between siblings.</li><li>Gaps: is-tight 8px, default 16px, is-loose 24px, is-section 48px (stack only). is-between spreads a cluster.</li></ul></section><section class="sg-comp" id="c-button"><div class="sg-comp-head"><p class="sg-eyebrow">Actions</p><h3>Button</h3><p>Pill buttons. Primary (raspberry), secondary (outlined), quiet (text), and small.</p></div><div class="sg-preview pb"><div class="pb-cluster">
+  <button class="pb-btn" type="button">Save changes</button>
+  <a class="pb-btn is-secondary" href="#">View details</a>
+  <button class="pb-btn is-secondary is-small" type="button">Small</button>
+  <button class="pb-btn is-quiet" type="button">Cancel</button>
+  <button class="pb-btn" type="button" disabled>Disabled</button>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-button">Copy</button><pre tabindex="0" aria-label="Button HTML"><code id="code-c-button">&lt;div class=&quot;pb-cluster&quot;&gt;
+  &lt;button class=&quot;pb-btn&quot; type=&quot;button&quot;&gt;Save changes&lt;/button&gt;
+  &lt;a class=&quot;pb-btn is-secondary&quot; href=&quot;#&quot;&gt;View details&lt;/a&gt;
+  &lt;button class=&quot;pb-btn is-secondary is-small&quot; type=&quot;button&quot;&gt;Small&lt;/button&gt;
+  &lt;button class=&quot;pb-btn is-quiet&quot; type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
+  &lt;button class=&quot;pb-btn&quot; type=&quot;button&quot; disabled&gt;Disabled&lt;/button&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>One primary button per view, for the single most important action.</li><li>Secondary for every other action. Quiet for dismiss, cancel and &quot;see all&quot;.</li><li>Use &lt;a&gt; for navigation and &lt;button type=&quot;button&quot;&gt; for actions. Never a &lt;div&gt;.</li><li>Slate is not a button colour.</li><li>Disabled: add disabled to a &lt;button&gt;, or aria-disabled=&quot;true&quot; to an &lt;a&gt;.</li></ul></section><section class="sg-comp" id="c-icon-button"><div class="sg-comp-head"><p class="sg-eyebrow">Actions</p><h3>Icon button</h3><p>Round 32px button holding a single 16px icon.</p></div><div class="sg-preview pb"><div class="pb-cluster is-tight">
+  <button class="pb-icon-btn" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button class="pb-icon-btn" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button class="pb-icon-btn" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-icon-button">Copy</button><pre tabindex="0" aria-label="Icon button HTML"><code id="code-c-icon-button">&lt;div class=&quot;pb-cluster is-tight&quot;&gt;
+  &lt;button class=&quot;pb-icon-btn&quot; type=&quot;button&quot; aria-label=&quot;Previous&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M15 18l-6-6 6-6&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;button class=&quot;pb-icon-btn&quot; type=&quot;button&quot; aria-label=&quot;Next&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M9 18l6-6-6-6&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;button class=&quot;pb-icon-btn&quot; type=&quot;button&quot; aria-label=&quot;Close&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Always give it an aria-label that says what it does.</li><li>Use for previous/next, close and similar compact controls only.</li></ul></section><section class="sg-comp" id="c-chips"><div class="sg-comp-head"><p class="sg-eyebrow">Actions</p><h3>Filter chips</h3><p>Pill links for filtering a list by section. The current one fills with its accent.</p></div><div class="sg-preview pb"><ul class="pb-chips">
+  <li><a href="#" aria-current="page">All <span class="pb-n">24</span></a></li>
+  <li><a href="#" data-accent="slate">Notes <span class="pb-n">17</span></a></li>
+  <li><a href="#" data-accent="green">Guides <span class="pb-n">5</span></a></li>
+  <li><a href="#" data-accent="amber">Reports <span class="pb-n">2</span></a></li>
+</ul>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-chips">Copy</button><pre tabindex="0" aria-label="Filter chips HTML"><code id="code-c-chips">&lt;ul class=&quot;pb-chips&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; aria-current=&quot;page&quot;&gt;All &lt;span class=&quot;pb-n&quot;&gt;24&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; data-accent=&quot;slate&quot;&gt;Notes &lt;span class=&quot;pb-n&quot;&gt;17&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; data-accent=&quot;green&quot;&gt;Guides &lt;span class=&quot;pb-n&quot;&gt;5&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; data-accent=&quot;amber&quot;&gt;Reports &lt;span class=&quot;pb-n&quot;&gt;2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></details><ul class=sg-rules><li>Mark the active chip with aria-current=&quot;page&quot; (links) or aria-pressed=&quot;true&quot; (buttons).</li><li>Give each chip the accent of the section it filters with data-accent. The &quot;All&quot; chip keeps the default.</li><li>Counts go in a &lt;span class=&quot;pb-n&quot;&gt;.</li></ul></section><section class="sg-comp" id="c-tags"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Tags and badges</h3><p>Tags are mono pills tinted by their accent. Badges are tiny uppercase status pills.</p></div><div class="sg-preview pb"><div class="pb-cluster is-tight">
+  <span class="pb-tag">design</span>
+  <span class="pb-tag" data-accent="slate">notes</span>
+  <span class="pb-tag" data-accent="green">guide</span>
+  <span class="pb-tag" data-accent="neutral">draft</span>
+  <span class="pb-badge">New</span>
+  <span class="pb-badge" data-accent="green">Live</span>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-tags">Copy</button><pre tabindex="0" aria-label="Tags and badges HTML"><code id="code-c-tags">&lt;div class=&quot;pb-cluster is-tight&quot;&gt;
+  &lt;span class=&quot;pb-tag&quot;&gt;design&lt;/span&gt;
+  &lt;span class=&quot;pb-tag&quot; data-accent=&quot;slate&quot;&gt;notes&lt;/span&gt;
+  &lt;span class=&quot;pb-tag&quot; data-accent=&quot;green&quot;&gt;guide&lt;/span&gt;
+  &lt;span class=&quot;pb-tag&quot; data-accent=&quot;neutral&quot;&gt;draft&lt;/span&gt;
+  &lt;span class=&quot;pb-badge&quot;&gt;New&lt;/span&gt;
+  &lt;span class=&quot;pb-badge&quot; data-accent=&quot;green&quot;&gt;Live&lt;/span&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Tags name a category; set data-accent to match the section.</li><li>Badges show state (&quot;New&quot;, &quot;Live&quot;, &quot;Draft&quot;). The default badge is amber, for new.</li><li>Keep both to one or two words, lowercase for tags.</li></ul></section><section class="sg-comp" id="c-meta"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Meta row</h3><p>Date, reading time and tag under a title, separated by middle dots.</p></div><div class="sg-preview pb"><div class="pb-meta">
+  <span class="pb-badge">New</span>
+  <time datetime="2026-11-02">Nov 2, 2026</time>
+  <span>3 min read</span>
+  <span class="pb-tag" data-accent="slate">notes</span>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-meta">Copy</button><pre tabindex="0" aria-label="Meta row HTML"><code id="code-c-meta">&lt;div class=&quot;pb-meta&quot;&gt;
+  &lt;span class=&quot;pb-badge&quot;&gt;New&lt;/span&gt;
+  &lt;time datetime=&quot;2026-11-02&quot;&gt;Nov 2, 2026&lt;/time&gt;
+  &lt;span&gt;3 min read&lt;/span&gt;
+  &lt;span class=&quot;pb-tag&quot; data-accent=&quot;slate&quot;&gt;notes&lt;/span&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Always use &lt;time datetime=&quot;YYYY-MM-DD&quot;&gt; for dates.</li><li>Order: badge (optional), date, reading time, tag. Separators are added for you.</li></ul></section><section class="sg-comp" id="c-card"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Card</h3><p>White card with a serif title, a two-line summary and a meta row. Lifts on hover when clickable.</p></div><div class="sg-preview pb"><ul class="pb-grid">
+  <li class="pb-card" data-accent="slate">
+    <a class="pb-cover" href="#" aria-label="A short, specific title"></a>
+    <h3>A short, specific title</h3>
+    <p>One or two lines that tell the reader what they will get from this.</p>
+    <div class="pb-meta"><time datetime="2026-11-02">Nov 2</time><span>3 min read</span><span class="pb-tag" data-accent="slate">notes</span></div>
+  </li>
+  <li class="pb-card">
+    <a class="pb-cover" href="#" aria-label="Another title that runs a little longer than the first"></a>
+    <h3>Another title that runs a little longer than the first</h3>
+    <p>Summaries are clamped visually by length, so keep them short.</p>
+    <div class="pb-meta"><time datetime="2026-10-28">Oct 28</time><span>8 min read</span><span class="pb-tag">design</span></div>
+  </li>
+</ul>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-card">Copy</button><pre tabindex="0" aria-label="Card HTML"><code id="code-c-card">&lt;ul class=&quot;pb-grid&quot;&gt;
+  &lt;li class=&quot;pb-card&quot; data-accent=&quot;slate&quot;&gt;
+    &lt;a class=&quot;pb-cover&quot; href=&quot;#&quot; aria-label=&quot;A short, specific title&quot;&gt;&lt;/a&gt;
+    &lt;h3&gt;A short, specific title&lt;/h3&gt;
+    &lt;p&gt;One or two lines that tell the reader what they will get from this.&lt;/p&gt;
+    &lt;div class=&quot;pb-meta&quot;&gt;&lt;time datetime=&quot;2026-11-02&quot;&gt;Nov 2&lt;/time&gt;&lt;span&gt;3 min read&lt;/span&gt;&lt;span class=&quot;pb-tag&quot; data-accent=&quot;slate&quot;&gt;notes&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;pb-card&quot;&gt;
+    &lt;a class=&quot;pb-cover&quot; href=&quot;#&quot; aria-label=&quot;Another title that runs a little longer than the first&quot;&gt;&lt;/a&gt;
+    &lt;h3&gt;Another title that runs a little longer than the first&lt;/h3&gt;
+    &lt;p&gt;Summaries are clamped visually by length, so keep them short.&lt;/p&gt;
+    &lt;div class=&quot;pb-meta&quot;&gt;&lt;time datetime=&quot;2026-10-28&quot;&gt;Oct 28&lt;/time&gt;&lt;span&gt;8 min read&lt;/span&gt;&lt;span class=&quot;pb-tag&quot;&gt;design&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></details><ul class=sg-rules><li>Make the whole card clickable with a .pb-cover link as the first child, with an aria-label of the title.</li><li>Put cards in a .pb-grid. Never nest cards inside cards.</li><li>data-accent on the card sets the hover title colour and the tag.</li></ul></section><section class="sg-comp" id="c-list"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Grouped list with date tiles</h3><p>An archive grouped by month. Each row has a calendar tile, a title and a sub-line.</p></div><div class="sg-preview pb"><div class="pb-list">
+  <h3>November 2026 <span>2 posts</span></h3>
+  <ol>
+    <li data-accent="slate"><a href="#"><span class="pb-cal"><b>Nov</b><span>2</span></span><span class="pb-body"><span class="pb-t">A short, specific title</span><span class="pb-sub"><span class="pb-tag" data-accent="slate">notes</span> 3 min read</span></span></a></li>
+    <li><a href="#"><span class="pb-cal"><b>Nov</b><span>1</span></span><span class="pb-body"><span class="pb-t">Another post title</span><span class="pb-sub"><span class="pb-tag">design</span> 8 min read</span></span></a></li>
+  </ol>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-list">Copy</button><pre tabindex="0" aria-label="Grouped list with date tiles HTML"><code id="code-c-list">&lt;div class=&quot;pb-list&quot;&gt;
+  &lt;h3&gt;November 2026 &lt;span&gt;2 posts&lt;/span&gt;&lt;/h3&gt;
+  &lt;ol&gt;
+    &lt;li data-accent=&quot;slate&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;pb-cal&quot;&gt;&lt;b&gt;Nov&lt;/b&gt;&lt;span&gt;2&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pb-body&quot;&gt;&lt;span class=&quot;pb-t&quot;&gt;A short, specific title&lt;/span&gt;&lt;span class=&quot;pb-sub&quot;&gt;&lt;span class=&quot;pb-tag&quot; data-accent=&quot;slate&quot;&gt;notes&lt;/span&gt; 3 min read&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;pb-cal&quot;&gt;&lt;b&gt;Nov&lt;/b&gt;&lt;span&gt;1&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pb-body&quot;&gt;&lt;span class=&quot;pb-t&quot;&gt;Another post title&lt;/span&gt;&lt;span class=&quot;pb-sub&quot;&gt;&lt;span class=&quot;pb-tag&quot;&gt;design&lt;/span&gt; 8 min read&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>One .pb-list per group, with an &lt;h3&gt; holding the group name and a count in a &lt;span&gt;.</li><li>The tile shows a three-letter month in &lt;b&gt; and the day in &lt;span&gt;. Its colour follows data-accent on the &lt;li&gt;.</li><li>Wrap the title in .pb-t so it underlines on hover.</li></ul></section><section class="sg-comp" id="c-callout"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Callout</h3><p>A boxed note with an accent edge. Dashed variant for placeholders.</p></div><div class="sg-preview pb"><div class="pb-stack is-tight">
+  <div class="pb-note" data-accent="slate"><strong>Heads up.</strong> This changes how links open on every page.</div>
+  <div class="pb-note" data-accent="amber"><strong>Careful.</strong> This can't be undone once it is published.</div>
+  <div class="pb-note is-dashed">Placeholder for something that hasn't been written yet.</div>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-callout">Copy</button><pre tabindex="0" aria-label="Callout HTML"><code id="code-c-callout">&lt;div class=&quot;pb-stack is-tight&quot;&gt;
+  &lt;div class=&quot;pb-note&quot; data-accent=&quot;slate&quot;&gt;&lt;strong&gt;Heads up.&lt;/strong&gt; This changes how links open on every page.&lt;/div&gt;
+  &lt;div class=&quot;pb-note&quot; data-accent=&quot;amber&quot;&gt;&lt;strong&gt;Careful.&lt;/strong&gt; This can&#x27;t be undone once it is published.&lt;/div&gt;
+  &lt;div class=&quot;pb-note is-dashed&quot;&gt;Placeholder for something that hasn&#x27;t been written yet.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Start with a bold lead-in (&quot;Heads up.&quot;, &quot;Tip.&quot;).</li><li>Slate for information, raspberry for tips, amber for warnings, green for success.</li><li>One callout per section at most.</li></ul></section><section class="sg-comp" id="c-content"><div class="sg-comp-head"><p class="sg-eyebrow">Content</p><h3>Long-form content</h3><p>Article styles for plain HTML inside .pb-content. Headings, lists, quotes, code, tables and figures.</p></div><div class="sg-preview pb"><article class="pb-content">
+  <p>Opening paragraph in body text, with an <a href="#">inline link</a> and some <strong>strong text</strong>.</p>
+  <h2>A section heading</h2>
+  <ul>
+    <li>A first point.
+      <ul><li>A nested detail, a little quieter.</li></ul></li>
+    <li>A second point with <code>inline code</code>.</li>
+  </ul>
+  <blockquote>A short quote that deserves to stand out.</blockquote>
+  <pre><code>npm run build</code></pre>
+</article>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-content">Copy</button><pre tabindex="0" aria-label="Long-form content HTML"><code id="code-c-content">&lt;article class=&quot;pb-content&quot;&gt;
+  &lt;p&gt;Opening paragraph in body text, with an &lt;a href=&quot;#&quot;&gt;inline link&lt;/a&gt; and some &lt;strong&gt;strong text&lt;/strong&gt;.&lt;/p&gt;
+  &lt;h2&gt;A section heading&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;A first point.
+      &lt;ul&gt;&lt;li&gt;A nested detail, a little quieter.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+    &lt;li&gt;A second point with &lt;code&gt;inline code&lt;/code&gt;.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote&gt;A short quote that deserves to stand out.&lt;/blockquote&gt;
+  &lt;pre&gt;&lt;code&gt;npm run build&lt;/code&gt;&lt;/pre&gt;
+&lt;/article&gt;
+</code></pre></details><ul class=sg-rules><li>Wrap the article body in &lt;article class=&quot;pb-content&quot;&gt; inside a reading-width .pb-wrap.</li><li>Each h2 opens a section with a hairline above it. Don&#x27;t add your own dividers.</li><li>Nested bullets change marker per level automatically.</li></ul></section><section class="sg-comp" id="c-field"><div class="sg-comp-head"><p class="sg-eyebrow">Forms</p><h3>Text field</h3><p>Label, input and help text stacked. Also textarea and select. Error state in red.</p></div><div class="sg-preview pb"><form class="pb-stack" onsubmit="return false">
+  <div class="pb-field">
+    <label for="f-name">Name</label>
+    <input class="pb-input" id="f-name" name="name" autocomplete="name" placeholder="Alex Lee">
+  </div>
+  <div class="pb-field is-error">
+    <label for="f-email">Email</label>
+    <input class="pb-input" id="f-email" name="email" type="email" value="alex@" aria-invalid="true" aria-describedby="f-email-help">
+    <p class="pb-help" id="f-email-help">Add the part after the @, like alex@example.com.</p>
+  </div>
+  <div class="pb-field">
+    <label for="f-topic">Topic</label>
+    <select class="pb-select" id="f-topic" name="topic"><option>General</option><option>Feedback</option></select>
+  </div>
+  <div class="pb-field">
+    <label for="f-msg">Message <span class="pb-optional">(optional)</span></label>
+    <textarea class="pb-textarea" id="f-msg" name="message" aria-describedby="f-msg-help"></textarea>
+    <p class="pb-help" id="f-msg-help">A few lines is plenty.</p>
+  </div>
+  <div class="pb-cluster"><button class="pb-btn" type="submit">Send</button><button class="pb-btn is-quiet" type="reset">Clear</button></div>
+</form>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-field">Copy</button><pre tabindex="0" aria-label="Text field HTML"><code id="code-c-field">&lt;form class=&quot;pb-stack&quot; onsubmit=&quot;return false&quot;&gt;
+  &lt;div class=&quot;pb-field&quot;&gt;
+    &lt;label for=&quot;f-name&quot;&gt;Name&lt;/label&gt;
+    &lt;input class=&quot;pb-input&quot; id=&quot;f-name&quot; name=&quot;name&quot; autocomplete=&quot;name&quot; placeholder=&quot;Alex Lee&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pb-field is-error&quot;&gt;
+    &lt;label for=&quot;f-email&quot;&gt;Email&lt;/label&gt;
+    &lt;input class=&quot;pb-input&quot; id=&quot;f-email&quot; name=&quot;email&quot; type=&quot;email&quot; value=&quot;alex@&quot; aria-invalid=&quot;true&quot; aria-describedby=&quot;f-email-help&quot;&gt;
+    &lt;p class=&quot;pb-help&quot; id=&quot;f-email-help&quot;&gt;Add the part after the @, like alex@example.com.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pb-field&quot;&gt;
+    &lt;label for=&quot;f-topic&quot;&gt;Topic&lt;/label&gt;
+    &lt;select class=&quot;pb-select&quot; id=&quot;f-topic&quot; name=&quot;topic&quot;&gt;&lt;option&gt;General&lt;/option&gt;&lt;option&gt;Feedback&lt;/option&gt;&lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pb-field&quot;&gt;
+    &lt;label for=&quot;f-msg&quot;&gt;Message &lt;span class=&quot;pb-optional&quot;&gt;(optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;textarea class=&quot;pb-textarea&quot; id=&quot;f-msg&quot; name=&quot;message&quot; aria-describedby=&quot;f-msg-help&quot;&gt;&lt;/textarea&gt;
+    &lt;p class=&quot;pb-help&quot; id=&quot;f-msg-help&quot;&gt;A few lines is plenty.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pb-cluster&quot;&gt;&lt;button class=&quot;pb-btn&quot; type=&quot;submit&quot;&gt;Send&lt;/button&gt;&lt;button class=&quot;pb-btn is-quiet&quot; type=&quot;reset&quot;&gt;Clear&lt;/button&gt;&lt;/div&gt;
+&lt;/form&gt;
+</code></pre></details><ul class=sg-rules><li>Every input has a visible &lt;label for&gt;. Placeholders are examples, never labels.</li><li>Help text goes under the input and is linked with aria-describedby.</li><li>Error: add is-error to .pb-field, aria-invalid=&quot;true&quot; to the input, and say how to fix it in the help text.</li><li>Mark optional fields, not required ones.</li></ul></section><section class="sg-comp" id="c-check"><div class="sg-comp-head"><p class="sg-eyebrow">Forms</p><h3>Checkbox and radio</h3><p>Native checkboxes and radios with a raspberry accent, wrapped in their label.</p></div><div class="sg-preview pb"><div class="pb-stack is-loose">
+  <fieldset class="pb-fieldset">
+    <legend>Email me about</legend>
+    <label class="pb-check"><input type="checkbox" checked> New posts</label>
+    <label class="pb-check"><input type="checkbox"><span>Project updates <small>About once a month.</small></span></label>
+  </fieldset>
+  <fieldset class="pb-fieldset">
+    <legend>Theme</legend>
+    <label class="pb-check"><input type="radio" name="theme-demo" checked> Match my system</label>
+    <label class="pb-check"><input type="radio" name="theme-demo"> Light</label>
+    <label class="pb-check"><input type="radio" name="theme-demo"> Dark</label>
+  </fieldset>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-check">Copy</button><pre tabindex="0" aria-label="Checkbox and radio HTML"><code id="code-c-check">&lt;div class=&quot;pb-stack is-loose&quot;&gt;
+  &lt;fieldset class=&quot;pb-fieldset&quot;&gt;
+    &lt;legend&gt;Email me about&lt;/legend&gt;
+    &lt;label class=&quot;pb-check&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; New posts&lt;/label&gt;
+    &lt;label class=&quot;pb-check&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt;&lt;span&gt;Project updates &lt;small&gt;About once a month.&lt;/small&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset class=&quot;pb-fieldset&quot;&gt;
+    &lt;legend&gt;Theme&lt;/legend&gt;
+    &lt;label class=&quot;pb-check&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;theme-demo&quot; checked&gt; Match my system&lt;/label&gt;
+    &lt;label class=&quot;pb-check&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;theme-demo&quot;&gt; Light&lt;/label&gt;
+    &lt;label class=&quot;pb-check&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;theme-demo&quot;&gt; Dark&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Group related options in a &lt;fieldset class=&quot;pb-fieldset&quot;&gt; with a &lt;legend&gt;.</li><li>Put the input inside its &lt;label class=&quot;pb-check&quot;&gt; so the whole line is clickable.</li><li>Extra description goes in a &lt;small&gt; inside a &lt;span&gt; next to the input.</li></ul></section><section class="sg-comp" id="c-tabs"><div class="sg-comp-head"><p class="sg-eyebrow">Navigation</p><h3>Tabs</h3><p>A row of links with a raspberry underline on the current one. Works without JavaScript.</p></div><div class="sg-preview pb"><nav aria-label="Sections">
+  <ul class="pb-tabs">
+    <li><a href="#" aria-current="page">Overview</a></li>
+    <li><a href="#">Notes</a></li>
+    <li><a href="#">Guides</a></li>
+    <li><a href="#">Archive</a></li>
+  </ul>
+</nav>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-tabs">Copy</button><pre tabindex="0" aria-label="Tabs HTML"><code id="code-c-tabs">&lt;nav aria-label=&quot;Sections&quot;&gt;
+  &lt;ul class=&quot;pb-tabs&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; aria-current=&quot;page&quot;&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Guides&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Archive&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre></details><ul class=sg-rules><li>Use for switching between pages or sections of the same thing. Each tab is a real link.</li><li>Mark the current tab with aria-current=&quot;page&quot;.</li><li>Two to six tabs. Scrolls sideways on phones.</li></ul></section><section class="sg-comp" id="c-crumbs"><div class="sg-comp-head"><p class="sg-eyebrow">Navigation</p><h3>Breadcrumbs</h3><p>Small path above a page title.</p></div><div class="sg-preview pb"><nav aria-label="Breadcrumb">
+  <ol class="pb-crumbs">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Notes</a></li>
+    <li><span aria-current="page">This page</span></li>
+  </ol>
+</nav>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-crumbs">Copy</button><pre tabindex="0" aria-label="Breadcrumbs HTML"><code id="code-c-crumbs">&lt;nav aria-label=&quot;Breadcrumb&quot;&gt;
+  &lt;ol class=&quot;pb-crumbs&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current=&quot;page&quot;&gt;This page&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+</code></pre></details><ul class=sg-rules><li>Wrap in &lt;nav aria-label=&quot;Breadcrumb&quot;&gt;. The last item is the current page, with aria-current=&quot;page&quot; and no link.</li></ul></section><section class="sg-comp" id="c-pager"><div class="sg-comp-head"><p class="sg-eyebrow">Navigation</p><h3>Pagination</h3><p>Previous and next pills with a page count between them.</p></div><div class="sg-preview pb"><nav class="pb-pager" aria-label="Pagination">
+  <a href="#" rel="prev" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Newer</a>
+  <span>Page 1 of 4</span>
+  <a href="#" rel="next">Older<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+</nav>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-pager">Copy</button><pre tabindex="0" aria-label="Pagination HTML"><code id="code-c-pager">&lt;nav class=&quot;pb-pager&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;a href=&quot;#&quot; rel=&quot;prev&quot; aria-disabled=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M15 18l-6-6 6-6&quot;/&gt;&lt;/svg&gt;Newer&lt;/a&gt;
+  &lt;span&gt;Page 1 of 4&lt;/span&gt;
+  &lt;a href=&quot;#&quot; rel=&quot;next&quot;&gt;Older&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M9 18l6-6-6-6&quot;/&gt;&lt;/svg&gt;&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre></details><ul class=sg-rules><li>Disable the end you are at with aria-disabled=&quot;true&quot;.</li><li>Use rel=&quot;prev&quot; and rel=&quot;next&quot; on the links.</li></ul></section><section class="sg-comp" id="c-table"><div class="sg-comp-head"><p class="sg-eyebrow">Data</p><h3>Table</h3><p>A bordered table on a white surface, with uppercase column labels and tabular figures.</p></div><div class="sg-preview pb"><div class="pb-table-wrap">
+  <table class="pb-table">
+    <caption>Builds this week</caption>
+    <thead><tr><th scope="col">Site</th><th scope="col">Status</th><th scope="col" class="is-num">Pages</th><th scope="col" class="is-num">Size</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Home</th><td><span class="pb-badge" data-accent="green">Live</span></td><td class="is-num">12</td><td class="is-num">84 KB</td></tr>
+      <tr><th scope="row">Notes</th><td><span class="pb-badge" data-accent="green">Live</span></td><td class="is-num">31</td><td class="is-num">212 KB</td></tr>
+      <tr><th scope="row">Profile</th><td><span class="pb-badge">New</span></td><td class="is-num">1</td><td class="is-num">146 KB</td></tr>
+    </tbody>
+  </table>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-table">Copy</button><pre tabindex="0" aria-label="Table HTML"><code id="code-c-table">&lt;div class=&quot;pb-table-wrap&quot;&gt;
+  &lt;table class=&quot;pb-table&quot;&gt;
+    &lt;caption&gt;Builds this week&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Site&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Status&lt;/th&gt;&lt;th scope=&quot;col&quot; class=&quot;is-num&quot;&gt;Pages&lt;/th&gt;&lt;th scope=&quot;col&quot; class=&quot;is-num&quot;&gt;Size&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Home&lt;/th&gt;&lt;td&gt;&lt;span class=&quot;pb-badge&quot; data-accent=&quot;green&quot;&gt;Live&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;12&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;84 KB&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Notes&lt;/th&gt;&lt;td&gt;&lt;span class=&quot;pb-badge&quot; data-accent=&quot;green&quot;&gt;Live&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;31&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;212 KB&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Profile&lt;/th&gt;&lt;td&gt;&lt;span class=&quot;pb-badge&quot;&gt;New&lt;/span&gt;&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;1&lt;/td&gt;&lt;td class=&quot;is-num&quot;&gt;146 KB&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Always wrap in .pb-table-wrap so wide tables scroll inside themselves on phones.</li><li>Give it a &lt;caption&gt;. Use &lt;th scope=&quot;col&quot;&gt; for headers and &lt;th scope=&quot;row&quot;&gt; for the first cell of each row.</li><li>Right-align number columns with is-num.</li></ul></section><section class="sg-comp" id="c-empty"><div class="sg-comp-head"><p class="sg-eyebrow">Data</p><h3>Empty state</h3><p>What shows when a list has nothing in it yet. A short title, one line of why, one action.</p></div><div class="sg-preview pb"><div class="pb-empty">
+  <strong>Nothing here yet</strong>
+  <p>Posts you save will show up here, newest first.</p>
+  <a class="pb-btn is-secondary is-small" href="#">Browse posts</a>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-empty">Copy</button><pre tabindex="0" aria-label="Empty state HTML"><code id="code-c-empty">&lt;div class=&quot;pb-empty&quot;&gt;
+  &lt;strong&gt;Nothing here yet&lt;/strong&gt;
+  &lt;p&gt;Posts you save will show up here, newest first.&lt;/p&gt;
+  &lt;a class=&quot;pb-btn is-secondary is-small&quot; href=&quot;#&quot;&gt;Browse posts&lt;/a&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>Say what will appear here and how to get it. No apologies, no illustrations.</li><li>At most one button, secondary unless it&#x27;s the main action on the page.</li></ul></section><section class="sg-comp" id="c-dialog"><div class="sg-comp-head"><p class="sg-eyebrow">Feedback</p><h3>Dialog</h3><p>A native &lt;dialog&gt; with a title, a sentence and actions in the footer.</p></div><div class="sg-preview pb"><dialog class="pb-dialog" id="confirm" aria-labelledby="confirm-title">
+  <div class="pb-dialog-body">
+    <h2 id="confirm-title">Delete this draft?</h2>
+    <p>The draft and its images will be removed. Published posts aren't affected.</p>
+  </div>
+  <form class="pb-dialog-actions" method="dialog">
+    <button class="pb-btn is-quiet" value="cancel">Cancel</button>
+    <button class="pb-btn" value="delete">Delete draft</button>
+  </form>
+</dialog>
+<button class="pb-btn is-secondary" type="button" onclick="document.getElementById('confirm').showModal()">Open dialog</button>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-dialog">Copy</button><pre tabindex="0" aria-label="Dialog HTML"><code id="code-c-dialog">&lt;dialog class=&quot;pb-dialog&quot; id=&quot;confirm&quot; aria-labelledby=&quot;confirm-title&quot;&gt;
+  &lt;div class=&quot;pb-dialog-body&quot;&gt;
+    &lt;h2 id=&quot;confirm-title&quot;&gt;Delete this draft?&lt;/h2&gt;
+    &lt;p&gt;The draft and its images will be removed. Published posts aren&#x27;t affected.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;form class=&quot;pb-dialog-actions&quot; method=&quot;dialog&quot;&gt;
+    &lt;button class=&quot;pb-btn is-quiet&quot; value=&quot;cancel&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button class=&quot;pb-btn&quot; value=&quot;delete&quot;&gt;Delete draft&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+&lt;button class=&quot;pb-btn is-secondary&quot; type=&quot;button&quot; onclick=&quot;document.getElementById(&#x27;confirm&#x27;).showModal()&quot;&gt;Open dialog&lt;/button&gt;
+</code></pre></details><ul class=sg-rules><li>Open with dialog.showModal(). Close with a &lt;form method=&quot;dialog&quot;&gt; button so Escape and focus return work for free.</li><li>Title in an &lt;h2&gt;, linked with aria-labelledby.</li><li>Actions right-aligned: quiet cancel first, then the primary action.</li><li>Only for decisions that block. Everything else is a toast or an inline message.</li></ul></section><section class="sg-comp" id="c-toast"><div class="sg-comp-head"><p class="sg-eyebrow">Feedback</p><h3>Toast</h3><p>A short dark pill confirming something happened, with an optional undo.</p></div><div class="sg-preview pb"><div class="pb-toast" role="status" data-accent="green"><span class="pb-dot" aria-hidden="true"></span>Link copied to clipboard<button type="button">Undo</button></div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-toast">Copy</button><pre tabindex="0" aria-label="Toast HTML"><code id="code-c-toast">&lt;div class=&quot;pb-toast&quot; role=&quot;status&quot; data-accent=&quot;green&quot;&gt;&lt;span class=&quot;pb-dot&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;Link copied to clipboard&lt;button type=&quot;button&quot;&gt;Undo&lt;/button&gt;&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>One sentence, past tense (&quot;Link copied&quot;). role=&quot;status&quot; so screen readers announce it.</li><li>Place it in a .pb-toast-region fixed at the bottom centre. Hide after about 4 seconds; keep it while hovered or focused.</li><li>The dot takes the accent: green for success, red for errors.</li></ul></section><section class="sg-comp" id="c-guide"><div class="sg-comp-head"><p class="sg-eyebrow">Signature</p><h3>Guide</h3><p>A stick figure in ink lines with a handwritten speech bubble. The one playful element.</p></div><div class="sg-preview pb"><div class="pb-guide">
+  <svg class="pb-figure" viewBox="0 0 60 88" aria-hidden="true"><path class="ln wave-arm" d="M30 41 L22 52 L20 61"/><path class="ln" d="M30 41 L38 52 L40 61"/><path class="ln" d="M30 36 L30 63 M30 63 L26 75 L24 86 M30 63 L34 75 L36 86"/><circle class="hd" cx="30" cy="23" r="13"/><circle class="eye" cx="25.5" cy="22" r="1.6"/><circle class="eye" cx="34.5" cy="22" r="1.6"/><path class="mouth" d="M25.5 27 Q30 30.5 34.5 27"/><g class="wv"><path class="ln" d="M30 41 L18 38"/><path class="ln fa" d="M18 38 L12 26"/></g></svg>
+  <div class="pb-bubble" role="status">
+    <p>Hi! Want to see the newest post?</p>
+    <div class="pb-acts"><a class="pb-btn is-small is-secondary" href="#">Show me</a><button class="pb-btn is-quiet" type="button">Later</button></div>
+  </div>
+</div>
+</div><details class="sg-code"><summary>HTML</summary><button class="sg-copybtn" type="button" data-copy="c-guide">Copy</button><pre tabindex="0" aria-label="Guide HTML"><code id="code-c-guide">&lt;div class=&quot;pb-guide&quot;&gt;
+  &lt;svg class=&quot;pb-figure&quot; viewBox=&quot;0 0 60 88&quot; aria-hidden=&quot;true&quot;&gt;&lt;path class=&quot;ln wave-arm&quot; d=&quot;M30 41 L22 52 L20 61&quot;/&gt;&lt;path class=&quot;ln&quot; d=&quot;M30 41 L38 52 L40 61&quot;/&gt;&lt;path class=&quot;ln&quot; d=&quot;M30 36 L30 63 M30 63 L26 75 L24 86 M30 63 L34 75 L36 86&quot;/&gt;&lt;circle class=&quot;hd&quot; cx=&quot;30&quot; cy=&quot;23&quot; r=&quot;13&quot;/&gt;&lt;circle class=&quot;eye&quot; cx=&quot;25.5&quot; cy=&quot;22&quot; r=&quot;1.6&quot;/&gt;&lt;circle class=&quot;eye&quot; cx=&quot;34.5&quot; cy=&quot;22&quot; r=&quot;1.6&quot;/&gt;&lt;path class=&quot;mouth&quot; d=&quot;M25.5 27 Q30 30.5 34.5 27&quot;/&gt;&lt;g class=&quot;wv&quot;&gt;&lt;path class=&quot;ln&quot; d=&quot;M30 41 L18 38&quot;/&gt;&lt;path class=&quot;ln fa&quot; d=&quot;M18 38 L12 26&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;
+  &lt;div class=&quot;pb-bubble&quot; role=&quot;status&quot;&gt;
+    &lt;p&gt;Hi! Want to see the newest post?&lt;/p&gt;
+    &lt;div class=&quot;pb-acts&quot;&gt;&lt;a class=&quot;pb-btn is-small is-secondary&quot; href=&quot;#&quot;&gt;Show me&lt;/a&gt;&lt;button class=&quot;pb-btn is-quiet&quot; type=&quot;button&quot;&gt;Later&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></details><ul class=sg-rules><li>At most one guide per page. It offers help or points at something; it never blocks content.</li><li>The speech bubble uses Caveat (pb-bubble p). Keep it under 15 words.</li><li>It waves once on hover or with is-waving; nothing else moves.</li></ul></section>
+  </main>
+</div>
+
+<script>
+(function () {
+  var r = document.documentElement;
+  document.getElementById('sg-theme').addEventListener('click', function () {
+    var dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    r.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('sg-theme', r.dataset.theme); localStorage.setItem('pb-theme', r.dataset.theme); } catch (e) {}
+  });
+  function copy(btn, text) {
+    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () {
+      var o = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = o; }, 1400);
+    }, function () { btn.textContent = 'Select and copy'; });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-copy],[data-copy-el]');
+    if (!b) return;
+    e.preventDefault();
+    var el = document.getElementById(b.dataset.copyEl || ('code-' + b.dataset.copy));
+    copy(b, el.textContent);
+  });
+  // close the switcher when clicking elsewhere
+  document.addEventListener('click', function (e) {
+    var d = document.querySelector('.sg-switch');
+    if (d.open && !d.contains(e.target)) d.open = false;
+  });
+})();
+</script>
+</body>
+</html>

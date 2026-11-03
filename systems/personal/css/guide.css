@@ -1,0 +1,30 @@
+/* ---- The guide: stick figure and handwritten speech ----
+   The figure is assets/guide.svg (standing pose). Lines take --pb-ink, the head fills with --pb-surface,
+   so it works in both themes. One gentle motion only: a slow wave when it speaks. */
+.pb-guide { display: inline-flex; align-items: flex-end; gap: var(--pb-space-2); }
+.pb-figure { display: block; width: 60px; height: 88px; flex: none; overflow: visible; }
+.pb-figure .ln { fill: none; stroke: var(--pb-ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pb-figure .hd { fill: var(--pb-surface); stroke: var(--pb-ink); stroke-width: 2.5; }
+.pb-figure .eye { fill: var(--pb-ink); }
+.pb-figure .mouth { fill: none; stroke: var(--pb-ink); stroke-width: 1.6; stroke-linecap: round; }
+.pb-figure .wv { display: none; }
+.pb-figure .wv, .pb-figure .fa { transform-box: view-box; }
+.pb-figure .wv { transform-origin: 30px 41px; }
+.pb-figure .fa { transform-origin: 18px 38px; }
+
+/* Speech bubble in Caveat. Tail points down-left at the figure. */
+.pb-bubble { position: relative; width: max-content; max-width: min(17rem, 78vw); margin: 0 0 60px; padding: var(--pb-space-2) 14px 9px;
+  border: 1px solid var(--pb-line); border-radius: var(--pb-radius-lg); background: var(--pb-surface); box-shadow: var(--pb-shadow-rest); color: var(--pb-ink); }
+.pb-bubble::after { content: ""; position: absolute; left: -6px; bottom: 16px; width: 10px; height: 10px; background: var(--pb-surface);
+  border-left: 1px solid var(--pb-line); border-bottom: 1px solid var(--pb-line); transform: rotate(45deg); }
+.pb-bubble p, .pb-hand { margin: 0; font: 600 19px/1.15 var(--pb-font-hand); letter-spacing: .01em; }
+.pb-bubble .pb-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--pb-space-2); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .pb-guide:hover .wave-arm, .pb-guide.is-waving .wave-arm { visibility: hidden; }
+  .pb-guide:hover .wv, .pb-guide.is-waving .wv { display: inline; animation: pb-raise 1.4s ease-in-out; }
+  .pb-guide:hover .fa, .pb-guide.is-waving .fa { animation: pb-wag 1.4s ease-in-out; }
+}
+@keyframes pb-raise { 0% { rotate: -95deg; } 16%, 84% { rotate: 0deg; } 100% { rotate: -95deg; } }
+@keyframes pb-wag { 0%, 16% { rotate: 0deg; } 27% { rotate: -22deg; } 40% { rotate: 18deg; } 53% { rotate: -22deg; } 66% { rotate: 18deg; }
+  76% { rotate: -10deg; } 84%, 100% { rotate: 0deg; } }

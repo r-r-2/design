@@ -1,0 +1,20 @@
+<!--
+name: Table
+group: Data
+summary: A bordered table on a white surface, with uppercase column labels and tabular figures.
+rules:
+- Always wrap in .pb-table-wrap so wide tables scroll inside themselves on phones.
+- Give it a <caption>. Use <th scope="col"> for headers and <th scope="row"> for the first cell of each row.
+- Right-align number columns with is-num.
+-->
+<div class="pb-table-wrap">
+  <table class="pb-table">
+    <caption>Builds this week</caption>
+    <thead><tr><th scope="col">Site</th><th scope="col">Status</th><th scope="col" class="is-num">Pages</th><th scope="col" class="is-num">Size</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Home</th><td><span class="pb-badge" data-accent="green">Live</span></td><td class="is-num">12</td><td class="is-num">84 KB</td></tr>
+      <tr><th scope="row">Notes</th><td><span class="pb-badge" data-accent="green">Live</span></td><td class="is-num">31</td><td class="is-num">212 KB</td></tr>
+      <tr><th scope="row">Profile</th><td><span class="pb-badge">New</span></td><td class="is-num">1</td><td class="is-num">146 KB</td></tr>
+    </tbody>
+  </table>
+</div>

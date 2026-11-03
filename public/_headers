@@ -1,0 +1,14 @@
+# Fonts and CSS are loaded cross-origin by other sites.
+/*/v*/fonts/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+/*/v*/*.css
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+/*/v*/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+/check.py
+  Content-Type: text/plain; charset=utf-8

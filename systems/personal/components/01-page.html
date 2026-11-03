@@ -1,0 +1,30 @@
+<!--
+name: Page skeleton
+group: Layout
+summary: Every page starts from this. Skip link, sticky header, main column, footer.
+rules:
+- Put class="pb" on <html> and load brand.css (or inline brand.inline.min.css).
+- Use <main class="pb-wrap"> for reading pages and <main class="pb-wrap is-wide"> for listings.
+- The skip link is the first thing in <body> and points at the main element's id.
+- Keep the inline theme script in <head> so the saved theme applies before paint.
+preview: code-only
+-->
+<!doctype html>
+<html lang="en" class="pb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page title — rr2.dev</title>
+  <link rel="stylesheet" href="https://design.rr2.dev/personal/v1/brand.css">
+  <script>try{var t=localStorage.getItem('pb-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <a class="pb-skip" href="#main">Skip to content</a>
+  <!-- Header component here -->
+  <main class="pb-wrap" id="main">
+    <h1 class="pb-h1">Page title</h1>
+    <p class="pb-lede">One or two sentences that say what this page is for.</p>
+  </main>
+  <!-- Footer component here -->
+</body>
+</html>

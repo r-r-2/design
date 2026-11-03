@@ -1,0 +1,17 @@
+<!--
+name: Stack and cluster
+group: Layout
+summary: Layout primitives for spacing. A stack spaces children vertically; a cluster lays them out in a wrapping row.
+rules:
+- Use these instead of margins between siblings.
+- Gaps: is-tight 8px, default 16px, is-loose 24px, is-section 48px (stack only). is-between spreads a cluster.
+-->
+<div class="pb-stack">
+  <div class="pb-cluster is-between">
+    <h2 class="pb-h3">Recent posts</h2>
+    <a class="pb-btn is-quiet" href="#">See all</a>
+  </div>
+  <div class="pb-cluster is-tight">
+    <span class="pb-tag">design</span><span class="pb-tag" data-accent="slate">notes</span><span class="pb-tag" data-accent="neutral">draft</span>
+  </div>
+</div>

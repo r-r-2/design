@@ -1,0 +1,20 @@
+<!--
+name: Long-form content
+group: Content
+summary: Article styles for plain HTML inside .pb-content. Headings, lists, quotes, code, tables and figures.
+rules:
+- Wrap the article body in <article class="pb-content"> inside a reading-width .pb-wrap.
+- Each h2 opens a section with a hairline above it. Don't add your own dividers.
+- Nested bullets change marker per level automatically.
+-->
+<article class="pb-content">
+  <p>Opening paragraph in body text, with an <a href="#">inline link</a> and some <strong>strong text</strong>.</p>
+  <h2>A section heading</h2>
+  <ul>
+    <li>A first point.
+      <ul><li>A nested detail, a little quieter.</li></ul></li>
+    <li>A second point with <code>inline code</code>.</li>
+  </ul>
+  <blockquote>A short quote that deserves to stand out.</blockquote>
+  <pre><code>npm run build</code></pre>
+</article>

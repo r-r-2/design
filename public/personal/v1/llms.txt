@@ -1,0 +1,10 @@
+# Personal brand design system v1.0.0
+
+> Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev.
+
+- [DESIGN.md](https://design.rr2.dev/personal/v1/DESIGN.md): read this first. Tokens, rules, every component's markup.
+- [brand.css](https://design.rr2.dev/personal/v1/brand.css): link from <head>, with class="pb" on <html>.
+- [brand.inline.min.css](https://design.rr2.dev/personal/v1/brand.inline.min.css): paste into a <style> tag for self-contained pages.
+- [tokens.json](https://design.rr2.dev/personal/v1/tokens.json): raw tokens, light and dark.
+- [Components](https://design.rr2.dev/personal/v1/components/): one HTML snippet per component.
+- [Review page](https://design.rr2.dev/personal/): live previews.

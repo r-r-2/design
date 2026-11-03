@@ -1,0 +1,10 @@
+<!--
+name: Toast
+group: Feedback
+summary: A short dark pill confirming something happened, with an optional undo.
+rules:
+- One sentence, past tense ("Link copied"). role="status" so screen readers announce it.
+- Place it in a .pb-toast-region fixed at the bottom centre. Hide after about 4 seconds; keep it while hovered or focused.
+- The dot takes the accent: green for success, red for errors.
+-->
+<div class="pb-toast" role="status" data-accent="green"><span class="pb-dot" aria-hidden="true"></span>Link copied to clipboard<button type="button">Undo</button></div>

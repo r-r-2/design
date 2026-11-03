@@ -1,0 +1,16 @@
+<!--
+name: Grouped list with date tiles
+group: Content
+summary: An archive grouped by month. Each row has a calendar tile, a title and a sub-line.
+rules:
+- One .pb-list per group, with an <h3> holding the group name and a count in a <span>.
+- The tile shows a three-letter month in <b> and the day in <span>. Its colour follows data-accent on the <li>.
+- Wrap the title in .pb-t so it underlines on hover.
+-->
+<div class="pb-list">
+  <h3>November 2026 <span>2 posts</span></h3>
+  <ol>
+    <li data-accent="slate"><a href="#"><span class="pb-cal"><b>Nov</b><span>2</span></span><span class="pb-body"><span class="pb-t">A short, specific title</span><span class="pb-sub"><span class="pb-tag" data-accent="slate">notes</span> 3 min read</span></span></a></li>
+    <li><a href="#"><span class="pb-cal"><b>Nov</b><span>1</span></span><span class="pb-body"><span class="pb-t">Another post title</span><span class="pb-sub"><span class="pb-tag">design</span> 8 min read</span></span></a></li>
+  </ol>
+</div>
