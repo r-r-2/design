@@ -419,9 +419,36 @@ def review_page(sysm: dict, t: dict, snips: list, systems: list) -> str:
     tpl = fill(tpl, "compnav", nav)
     start = ('<li class="sg-navgroup">Start</li><li><a href="#agents">Use with an agent</a></li><li class="sg-navgroup">Foundations</li>'
              '<li><a href="#colour">Colour</a></li><li><a href="#type">Type</a></li><li><a href="#space">Space and shape</a></li>')
+    video = video_section(sysm, base) if (ROOT / "systems" / sid / "video" / "end-card.html").exists() else ""
+    tpl = fill(tpl, "video", video)
+    if video:
+        start += '<li><a href="#video">Video end card</a></li>'
     tpl = fill(tpl, "jumpnav", start + nav)
     tpl = fill(tpl, "components", comps)
     return tpl
+
+
+def video_section(sysm: dict, base: str) -> str:
+    """Live previews of the system's video end card, 16:9 and 9:16, with a replay button."""
+    card = f"{base}/video/end-card.html"
+    wide, tall = f"{card}?w=1920&amp;h=1080", f"{card}?w=1080&amp;h=1920&amp;site=notes&amp;cta=Read%20the%20post"
+    return (
+        '<h2 class="pb-h2 sg-h2" id="video">Video end card</h2>\n'
+        f'<p>How every video about one of the sites ends. The rules are in <a class="pb-link" href="{base}/DESIGN.md">DESIGN.md</a>, under Motion.</p>\n'
+        f'<div class="sg-preview {sysm["prefix"]} sg-fpanel" data-system="{esc(sysm["title"])}">'
+        '<div class="sg-video">'
+        f'<figure class="sg-vid is-wide"><iframe title="End card, 16:9, no button" src="{wide}" loading="lazy"></iframe>'
+        f'<figcaption>16:9, no button · <a class="pb-link" href="{wide}">Open full screen</a></figcaption></figure>'
+        f'<figure class="sg-vid is-tall"><iframe title="End card, 9:16, with a button" src="{tall}" loading="lazy"></iframe>'
+        f'<figcaption>9:16, with a button · <a class="pb-link" href="{tall}">Open full screen</a></figcaption></figure>'
+        '</div>'
+        '<button class="pb-btn is-secondary is-small" type="button" '
+        'onclick="document.querySelectorAll(\'.sg-vid iframe\').forEach(function(f){f.src=f.src})">Replay</button>'
+        '</div>\n'
+        f'<p class="sg-vidnote">Set it from the link: <code>?w=1080&amp;h=1920&amp;site=notes&amp;cta=Read%20the%20post</code>. '
+        f'To make an MP4, run <code>node video/film.js out.mp4 1080 1920 notes "Read the post"</code> from a copy of the '
+        f'<a class="pb-link" href="{base}/">v1 folder</a> (needs Playwright and ffmpeg).</p>\n'
+    )
 
 
 def other_tokens(systems: list, skip: set) -> str:

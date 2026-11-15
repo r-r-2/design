@@ -1,4 +1,4 @@
-# Personal brand design system v1.1.1
+# Personal brand design system v1.2.0
 
 > Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev.
 

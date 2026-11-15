@@ -5,7 +5,7 @@
   "description": "Calm paper-and-ink pages with a raspberry accent. Used by rr2.dev, notes.rr2.dev and resume.rr2.dev.",
   "owner": "Rahul Ravikumar",
   "prefix": "pb",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "status": "stable",
   "used_by": [
     "rr2.dev",

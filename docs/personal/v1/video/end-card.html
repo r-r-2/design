@@ -19,8 +19,8 @@
   @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-400.woff2) format("woff2"); font-weight: 400; }
   @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-600.woff2) format("woff2"); font-weight: 600; }
   html, body { margin: 0; background: var(--pb-paper); overflow: hidden; }
-  /* viewed in a browser: the frame is scaled to fit the window, centred on dark bars like a video player */
-  body.view { background: var(--pb-ink); width: 100vw; height: 100vh; }
+  /* viewed in a browser: the frame is scaled to fit the window, centred on paper-coloured bars */
+  body.view { background: var(--pb-paper); width: 100vw; height: 100vh; }
   body.view #stage { position: absolute; left: 50%; top: 50%; transform-origin: 0 0; }
   #stage { position: relative; overflow: hidden;
            background: radial-gradient(closest-side, var(--pb-surface) 0%, var(--pb-paper) 100%) var(--pb-paper); }

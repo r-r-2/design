@@ -145,3 +145,16 @@
 
 /* Review pages are wider than the brand's 1024px header: line the header up with the sidebar layout */
 .sg-wide .pb-nav { max-width: calc(var(--pb-layout-wide) + 280px + var(--pb-layout-gap) * 2); }
+
+/* Video end card previews */
+.sg-video { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.32fr); gap: var(--pb-space-6); align-items: end; margin-bottom: var(--pb-space-4); }
+.sg-vid { margin: 0; }
+.sg-vid iframe { display: block; width: 100%; border: 1px solid var(--pb-line); border-radius: var(--pb-radius-md); background: var(--pb-paper); }
+.sg-vid.is-wide iframe { aspect-ratio: 16 / 9; }
+.sg-vid.is-tall iframe { aspect-ratio: 9 / 16; }
+.sg-vid figcaption { margin-top: var(--pb-space-2); color: var(--pb-muted); font: 400 var(--pb-size-sm)/1.5 var(--pb-font-sans); }
+.sg-vidnote { max-width: 62ch; margin: var(--pb-space-3) 0 0; color: var(--pb-muted); font: 400 var(--pb-size-md)/1.6 var(--pb-font-sans); }
+@media (max-width: 640px) {
+  .sg-video { grid-template-columns: minmax(0, 1fr); }
+  .sg-vid.is-tall { max-width: 60%; }
+}
