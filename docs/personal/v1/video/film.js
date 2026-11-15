@@ -1,6 +1,11 @@
 // node film.js <out.mp4> <w> <h> [site] [cta] [fps]  ->  films end-card.html frame by frame into an MP4
 const { chromium } = require('playwright'); const { spawn } = require('child_process'); const path = require('path');
+const fs = require('fs');
 const [out, w = 1920, h = 1080, site = 'resume', cta = '', fps = 60] = process.argv.slice(2);
+if (!fs.existsSync(path.resolve(__dirname, '../tokens.css'))) {
+  console.error('tokens.css not found next to this folder. Run film.js from the published v1 folder (docs/personal/v1/video/ after a build, or a download of it).');
+  process.exit(1);
+}
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: +w, height: +h } });
   const url = `file://${path.resolve(__dirname, 'end-card.html')}?film=1&w=${w}&h=${h}&site=${encodeURIComponent(site)}&cta=${encodeURIComponent(cta)}`;

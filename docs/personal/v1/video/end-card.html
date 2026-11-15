@@ -19,6 +19,9 @@
   @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-400.woff2) format("woff2"); font-weight: 400; }
   @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-600.woff2) format("woff2"); font-weight: 600; }
   html, body { margin: 0; background: var(--pb-paper); overflow: hidden; }
+  /* viewed in a browser: the frame is scaled to fit the window, centred on dark bars like a video player */
+  body.view { background: var(--pb-ink); width: 100vw; height: 100vh; }
+  body.view #stage { position: absolute; left: 50%; top: 50%; transform-origin: 0 0; }
   #stage { position: relative; overflow: hidden;
            background: radial-gradient(closest-side, var(--pb-surface) 0%, var(--pb-paper) 100%) var(--pb-paper); }
   #card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
@@ -128,6 +131,14 @@
   })).then(() => { fit(); window.render(q.has('t') ? +q.get('t') : 0); });
 
   // Play once on its own unless a frame time was given; reduced motion shows the finished frame.
+  // Filming (?film) keeps exact pixels; otherwise fit the frame to the window.
+  const viewing = !q.has('film');
+  const fitView = () => {
+    const k = Math.min(innerWidth / W, innerHeight / H);
+    stage.style.transform = `scale(${k}) translate(-50%, -50%)`;
+  };
+  if (viewing) { document.body.classList.add('view'); fitView(); addEventListener('resize', fitView); }
+
   window.ready.then(() => {
     if (q.has('t') || q.has('film')) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) { window.render(DURATION); return; }
