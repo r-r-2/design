@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Video end card</title>
+<link rel="stylesheet" href="../tokens.css">
+<!--
+  Video end card (personal brand). One file, no build step.
+  Settings come from the URL:  end-card.html?w=1920&h=1080&site=resume&cta=Take%20the%20journey
+    w, h  video size in px (layout follows the shape: wide = side by side, tall or square = stacked)
+    site  subdomain shown before "rr2.dev" (empty for rr2.dev itself)
+    cta   optional button text, chosen for the video's purpose (an arrow is added); leave out for no button
+  window.render(t) draws the frame at t seconds (pure function of t), so a script can film it frame by frame.
+  Needs ../tokens.css, ../fonts/ and ../assets/avatar-full.png next to it (the published v1 folder has them).
+  Without ?t, the page plays itself once; with prefers-reduced-motion it shows the finished frame.
+-->
+<style>
+  @font-face { font-family: "Fraunces"; src: url(../fonts/fraunces.woff2) format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-400.woff2) format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Instrument Sans"; src: url(../fonts/instrument-sans-600.woff2) format("woff2"); font-weight: 600; }
+  html, body { margin: 0; background: var(--pb-paper); overflow: hidden; }
+  #stage { position: relative; overflow: hidden;
+           background: radial-gradient(closest-side, var(--pb-surface) 0%, var(--pb-paper) 100%) var(--pb-paper); }
+  #card { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #card.row { flex-direction: row; }
+  #card.col { flex-direction: column; text-align: center; }
+  #av { position: relative; flex: none; border-radius: 50%; }
+  #av svg { display: block; width: 100%; height: 100%; border-radius: 50%; }
+  #av .ring { position: absolute; inset: 0; border-radius: 50%;
+              box-shadow: 0 0 0 calc(var(--u) * 8px) var(--pb-surface), 0 0 0 calc(var(--u) * 14px) var(--pb-raspberry-soft),
+                          0 calc(var(--u) * 18px) calc(var(--u) * 40px) calc(var(--u) * -12px) color-mix(in srgb, var(--pb-ink) 28%, transparent); }
+  #copy { display: flex; flex-direction: column; }
+  #card.row #copy { align-items: flex-start; }
+  #card.col #copy { align-items: center; }
+  #site { font-family: var(--pb-font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1;
+          color: var(--pb-ink); white-space: nowrap; }
+  #site b { font-weight: 600; color: var(--pb-raspberry); }
+  #cta { position: relative; overflow: hidden; display: inline-block; border-radius: 999px;
+         background: var(--pb-raspberry); color: var(--pb-on-accent);
+         font-family: var(--pb-font-sans); font-weight: 600; white-space: nowrap; }
+  #shine { position: absolute; top: 0; bottom: 0; width: 40%; left: 0;
+           background: linear-gradient(100deg, transparent 0%, color-mix(in srgb, var(--pb-surface) 55%, transparent) 50%, transparent 100%); opacity: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="card">
+    <div id="av">
+      <svg viewBox="-10 -5 370 370" aria-hidden="true">
+        <rect x="-10" y="-5" width="370" height="370" fill="#bfdae7"/>
+        <image href="../assets/avatar-full.png" width="350" height="394"/>
+        <!-- eyelids for the blink: skin patch over each pupil + a closed-eye curve in the outline colour -->
+        <g id="lids" opacity="0">
+          <ellipse cx="140.5" cy="148" rx="10.5" ry="10" fill="#AE755C"/>
+          <ellipse cx="211" cy="147.5" rx="10.5" ry="10" fill="#AE755C"/>
+          <path d="M130 149 Q140.5 155 151 149" stroke="#1a1310" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+          <path d="M200.5 148.5 Q211 154.5 221.5 148.5" stroke="#1a1310" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div class="ring"></div>
+    </div>
+    <div id="copy">
+      <div id="site"></div>
+      <div id="cta"><span id="ctaText"></span><span id="shine"></span></div>
+    </div>
+  </div>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const W = +q.get('w') || 1920, H = +q.get('h') || 1080;
+  const SITE = q.has('site') ? q.get('site') : 'resume';
+  const CTA = (q.get('cta') || '').trim();
+  const $ = (id) => document.getElementById(id);
+
+  // Timeline (seconds). Calm: no bounce, design-system easing cubic-bezier(.2,.7,.2,1).
+  const T = { avatar: [0.0, 0.7], site: [0.4, 1.0], cta: [0.75, 1.3], blink: 1.9, shine: [2.25, 2.95], end: 4.0 };
+  const DURATION = T.end;
+
+  // --- layout from the video shape ---------------------------------------------------------
+  const u = Math.min(W, H) / 1080;              // 1 unit = 1px on a 1080-short-side video
+  const wide = W / H >= 1.2;
+  const stage = $('stage'); stage.style.width = W + 'px'; stage.style.height = H + 'px';
+  stage.style.setProperty('--u', u);
+  const card = $('card'); card.className = wide ? 'row' : 'col';
+  const AV = (wide ? 300 : 410) * u;
+  $('av').style.width = $('av').style.height = AV + 'px';
+  card.style.gap = (wide ? 72 : 84) * u + 'px';
+  $('site').innerHTML = (SITE ? SITE + '.' : '') + '<b>rr2.dev</b>';
+  $('site').style.fontSize = (wide ? 124 : 134) * u + 'px';
+  $('ctaText').textContent = CTA + ' →';
+  if (!CTA) $('cta').style.display = 'none';
+  const cta = $('cta');
+  cta.style.fontSize = (wide ? 44 : 52) * u + 'px';
+  cta.style.padding = `${20 * u}px ${46 * u}px ${22 * u}px`;
+  cta.style.marginTop = 40 * u + 'px';
+  // shrink the name to fit narrow (tall) frames
+  const fit = () => { const max = W * 0.86, w = $('site').scrollWidth; if (!wide && w > max) $('site').style.fontSize = parseFloat($('site').style.fontSize) * max / w + 'px'; };
+
+  // --- easing helpers -------------------------------------------------------------------------
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const seg = (t, [a, b]) => clamp((t - a) / (b - a));
+  const bez = (p1x, p1y, p2x, p2y) => (x) => {        // cubic-bezier, solved for x
+    let lo = 0, hi = 1, s = x;
+    for (let i = 0; i < 24; i++) { s = (lo + hi) / 2; const xs = 3*(1-s)*(1-s)*s*p1x + 3*(1-s)*s*s*p2x + s*s*s; if (xs < x) lo = s; else hi = s; }
+    return 3*(1-s)*(1-s)*s*p1y + 3*(1-s)*s*s*p2y + s*s*s;
+  };
+  const ease = bez(.2, .7, .2, 1);
+
+  // --- one frame ------------------------------------------------------------------------------
+  window.render = (t) => {
+    const a = ease(seg(t, T.avatar)), s = ease(seg(t, T.site)), c = ease(seg(t, T.cta));
+    const av = $('av');
+    av.style.opacity = a;
+    av.style.transform = wide ? `translateX(${(1 - a) * -60 * u}px) scale(${0.94 + 0.06 * a})`
+                              : `translateY(${(1 - a) * 50 * u}px) scale(${0.94 + 0.06 * a})`;
+    $('site').style.opacity = s; $('site').style.transform = `translateY(${(1 - s) * 28 * u}px)`;
+    cta.style.opacity = c;       cta.style.transform = `translateY(${(1 - c) * 22 * u}px)`;
+    // one blink: ~0.14 s closed
+    $('lids').setAttribute('opacity', t >= T.blink && t < T.blink + 0.14 ? 1 : 0);
+    // one shine across the button
+    const sh = seg(t, T.shine);
+    $('shine').style.opacity = sh > 0 && sh < 1 ? 1 : 0;
+    $('shine').style.left = (-45 + 150 * ease(sh)) + '%';
+  };
+
+  window.ready = document.fonts.ready.then(() => new Promise((res) => {
+    const i = new Image(); i.onload = res; i.onerror = res; i.src = '../assets/avatar-full.png';
+  })).then(() => { fit(); window.render(q.has('t') ? +q.get('t') : 0); });
+
+  // Play once on its own unless a frame time was given; reduced motion shows the finished frame.
+  window.ready.then(() => {
+    if (q.has('t') || q.has('film')) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { window.render(DURATION); return; }
+    const t0 = performance.now();
+    const tick = (now) => { const t = (now - t0) / 1000; window.render(Math.min(t, DURATION)); if (t < DURATION) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+</script>
+</body>
+</html>

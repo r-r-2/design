@@ -485,6 +485,8 @@ def build_system(sysdir: Path, systems: list) -> None:
     copytree(sysdir / "fonts", out / "fonts")
     copytree(sysdir / "assets", out / "assets")
     copytree(sysdir / "components", out / "components")
+    if (sysdir / "video").is_dir():
+        copytree(sysdir / "video", out / "video")
     write(out / "brand.css", brand)
     write(out / "brand.min.css", minify(brand))
     write(out / "brand.inline.min.css", minify(head + fonts_css(f"{SITE}/{sid}/v{major}/fonts/") + tok + comps))
